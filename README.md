@@ -1,4 +1,4 @@
-# EdTech Content Management Framework
+# EdTech Localization Framework | Structured Learning Content
 
 A practical framework for small EdTech teams (5–7 people) to create, manage, and localize educational content without a dedicated localization agency.
 
