@@ -1,0 +1,127 @@
+[
+  {
+    "id": "question-cv-photo-italy-it",
+    "type": "question",
+    "meta": {
+      "language": "it",
+      "version": "1.0",
+      "status": "published",
+      "owner": "content-team",
+      "questionType": "true-false",
+      "formality": "informal",
+      "sourceLanguage": "en",
+      "sourceId": "question-cv-photo-italy",
+      "difficulty": "beginner",
+      "relatedLesson": "lesson-cv-italy-basics-it",
+      "updatedAt": "2026-10-15"
+    },
+    "content": {
+      "stem": "Includere una foto professionale nel CV è più comune in Italia che nel Regno Unito o negli Stati Uniti.",
+      "correctAnswer": "vero",
+      "explanation": "Sebbene non sia universale in tutti i settori, includere una foto è significativamente più comune in Italia (e in molti altri paesi europei) rispetto ai mercati anglofoni, dove spesso è attivamente sconsigliata. La scelta dipende dall'offerta di lavoro e dalla cultura aziendale — se l'annuncio la richiede, includila; se non la menziona, la foto è facoltativa e ometterla è ugualmente accettabile.",
+      "culturalNotes": "Traduzione di question-cv-photo-italy. La formulazione comparativa ('più comune') è stata mantenuta deliberatamente. La spiegazione non indica una scelta di default: segue l'annuncio di lavoro, non una regola assoluta. Non rafforzare con 'obbligatoria' o 'più sicuro includerla' in nessuna versione linguistica. Coerente con la lezione aggiornata."
+    },
+    "localizationFlags": {
+      "scenarioDependent": true,
+      "containsProperNouns": true,
+      "containsIdiom": false,
+      "culturalReadinessScore": 7,
+      "localeReadiness": [
+        {
+          "locale": "it",
+          "status": "approved",
+          "notes": "Traduzione verificata. Registro tu applicato. Formulazione comparativa mantenuta.",
+          "reviewedBy": "giulia.m",
+          "reviewedAt": "2026-10-15"
+        }
+      ]
+    }
+  },
+  {
+    "id": "question-cv-europass-it",
+    "type": "question",
+    "meta": {
+      "language": "it",
+      "version": "1.0",
+      "status": "published",
+      "owner": "content-team",
+      "questionType": "multiple-choice",
+      "formality": "informal",
+      "sourceLanguage": "en",
+      "sourceId": "question-cv-europass",
+      "difficulty": "beginner",
+      "relatedLesson": "lesson-cv-italy-basics-it",
+      "updatedAt": "2026-10-15"
+    },
+    "content": {
+      "stem": "Quale formato di CV è ampiamente riconosciuto dai datori di lavoro italiani e consigliato come punto di partenza affidabile?",
+      "options": [
+        { "id": "a", "text": "Un CV funzionale di due pagine in stile britannico", "correct": false },
+        { "id": "b", "text": "Il formato Europass",                                   "correct": true  },
+        { "id": "c", "text": "Un résumé americano di una pagina",                    "correct": false },
+        { "id": "d", "text": "Un CV creativo in stile portfolio",                   "correct": false }
+      ],
+      "explanation": "Il formato Europass è un modello di CV standardizzato promosso dall'UE. È ampiamente riconosciuto dai datori di lavoro italiani ed è un punto di partenza affidabile, specialmente per chi si avvicina per la prima volta al mercato del lavoro italiano. Per ruoli creativi o aziende internazionali, anche un CV personalizzato può essere appropriato. Il modello Europass è disponibile gratuitamente su europass.eu.",
+      "culturalNotes": "Europass è un riferimento paneuropeo — il termine non richiede localizzazione."
+    },
+    "localizationFlags": {
+      "scenarioDependent": false,
+      "containsProperNouns": true,
+      "containsIdiom": false,
+      "culturalReadinessScore": 9,
+      "localeReadiness": [
+        {
+          "locale": "it",
+          "status": "approved",
+          "notes": "Traduzione diretta. Nessun adattamento culturale necessario.",
+          "reviewedBy": "giulia.m",
+          "reviewedAt": "2026-10-15"
+        }
+      ]
+    }
+  },
+  {
+    "id": "question-cv-length-italy-it",
+    "type": "question",
+    "meta": {
+      "language": "it",
+      "version": "1.0",
+      "status": "published",
+      "owner": "content-team",
+      "questionType": "multiple-choice",
+      "formality": "informal",
+      "sourceLanguage": "en",
+      "sourceId": "question-cv-length-italy",
+      "difficulty": "beginner",
+      "relatedLesson": "lesson-cv-italy-basics-it",
+      "updatedAt": "2026-10-15"
+    },
+    "content": {
+      "stem": "Qual è la lunghezza tipica di un CV italiano?",
+      "options": [
+        { "id": "a", "text": "Mezza pagina",  "correct": false },
+        { "id": "b", "text": "1–2 pagine",    "correct": true  },
+        { "id": "c", "text": "3–4 pagine",    "correct": false },
+        { "id": "d", "text": "5 pagine o più","correct": false }
+      ],
+      "explanation": "I CV italiani sono tipicamente di 1–2 pagine. Il modello Europass è progettato tenendo conto di questa lunghezza. Un CV significativamente più lungo di 2 pagine potrebbe essere percepito come dispersivo dai selezionatori italiani.",
+      "hint": "Pensa a quello che sai sui modelli Europass.",
+      "culturalNotes": "Contenuto puramente fattuale. Nessun rischio culturale. Traduzione diretta."
+    },
+    "localizationFlags": {
+      "scenarioDependent": false,
+      "containsProperNouns": false,
+      "containsIdiom": false,
+      "culturalReadinessScore": 10,
+      "localeReadiness": [
+        {
+          "locale": "it",
+          "status": "approved",
+          "notes": "Traduzione diretta senza adattamenti.",
+          "reviewedBy": "giulia.m",
+          "reviewedAt": "2026-10-15"
+        }
+      ]
+    }
+  }
+]

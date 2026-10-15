@@ -1,0 +1,208 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "edtech-cmf/ui-label",
+  "title": "UI Label",
+  "description": "Interface strings and microcopy — buttons, navigation, status messages, tooltips, error states. These are the highest-volume content type and the most likely to be hardcoded in components. The schema creates a contract between content and frontend.",
+  "type": "object",
+  "required": ["id", "type", "meta", "content", "localizationFlags"],
+  "additionalProperties": false,
+
+  "properties": {
+
+    "id": {
+      "type": "string",
+      "pattern": "^label-[a-z][a-z0-9-]*$",
+      "description": "The key used in code. Example: label-btn-submit, label-nav-home, label-error-network"
+    },
+
+    "type": { "const": "ui-label" },
+
+    "meta": {
+      "type": "object",
+      "required": ["language", "version", "status", "owner", "labelType", "formality"],
+      "properties": {
+        "language":  {
+          "type": "string",
+          "pattern": "^[a-z]{2,3}(-[A-Za-z0-9]{2,8})*$",
+          "description": "BCP-47 language tag. Examples: en, it, de, es-419, nl-BE"
+        },
+        "version":   { "type": "string", "pattern": "^\\d+\\.\\d+$" },
+        "status":    { "type": "string", "enum": ["draft", "cultural-review", "translation", "qa", "published", "archived"] },
+        "owner":     { "type": "string" },
+        "labelType": {
+          "type": "string",
+          "enum": ["button", "navigation", "heading", "placeholder", "error", "success", "tooltip", "status", "onboarding"],
+          "description": "Where in the UI this label appears. Determines character limit and tone expectations."
+        },
+        "formality": {
+          "type": "string",
+          "enum": ["formal", "informal", "neutral"],
+          "description": "Register of address toward the learner. Determines imperative form and pronoun choice in all target languages. Must be consistent across all UI labels in the same product."
+        },
+        "sourceLanguage": {
+          "type": "string",
+          "pattern": "^[a-z]{2,3}(-[A-Za-z0-9]{2,8})*$",
+          "description": "BCP-47 tag of the language this was adapted from. Omit if this is the source."
+        },
+        "sourceId":  { "type": "string", "description": "ID of the source label this was adapted from" },
+        "component": { "type": "string", "description": "Frontend component this label belongs to. Example: QuizCard, ProgressBar" },
+        "updatedAt": { "type": "string", "format": "date" }
+      },
+      "additionalProperties": false
+    },
+
+    "content": {
+      "type": "object",
+      "required": ["value", "context"],
+      "properties": {
+
+        "value": {
+          "type": "string",
+          "description": "The display string. For labels with variables, use {variableName} syntax. Example: 'Welcome back, {firstName}'"
+        },
+
+        "variables": {
+          "type": "array",
+          "description": "Required when value contains {placeholders}. Documents each variable for translators and frontend developers.",
+          "items": {
+            "type": "object",
+            "required": ["name", "description"],
+            "additionalProperties": false,
+            "properties": {
+              "name":        { "type": "string", "description": "Must match exactly one {placeholder} in value" },
+              "description": { "type": "string", "description": "What this variable represents at runtime" },
+              "example":     { "type": "string", "description": "A realistic example value. Helps translators understand word order and gender agreement." }
+            }
+          }
+        },
+
+        "maxLength": {
+          "type": "integer",
+          "minimum": 1,
+          "description": "Maximum character count for any translated string, based on UI layout constraints. Semantics: this limit applies to the static string as written, including any {placeholder} tokens counted as literal characters (e.g. '{firstName}' counts as 11 characters). It does NOT represent the runtime length after variable substitution — a string like 'Welcome back, {firstName}!' may render much longer depending on the actual value. Runtime length enforcement requires UI-level testing. The validator (validate.js) checks static length only and will flag overruns with an explanatory note."
+        },
+
+        "context": {
+          "type": "string",
+          "description": "Required. Where and how this label appears. Critical for translators who cannot see the UI. Example: 'Submit button at the bottom of the quiz card. Appears after the learner has answered all questions.'"
+        },
+
+        "culturalNotes": {
+          "type": "string",
+          "description": "Notes about tone or wording assumptions. Example: 'Try Again uses an encouraging tone. In formal-register languages, ensure the imperative does not read as a command.'"
+        }
+
+      },
+      "additionalProperties": false,
+
+      "if": {
+        "properties": {
+          "value": { "type": "string", "pattern": "\\{[a-zA-Z][a-zA-Z0-9]*\\}" }
+        }
+      },
+      "then": {
+        "required": ["variables"]
+      }
+    },
+
+    "localizationFlags": {
+      "type": "object",
+      "required": ["culturalReadinessScore"],
+      "description": "Required on every content item. Signals content adaptability before translation begins.",
+      "properties": {
+        "genderSensitive": {
+          "type": "boolean",
+          "description": "True if the label may require grammatical gender agreement in target languages (IT, ES, FR, DE). Common in labels that include adjectives describing the learner or their work."
+        },
+        "expandable": {
+          "type": "boolean",
+          "description": "True if the UI component can accommodate longer translated strings. German and Dutch labels are often 25–40% longer than English. When false, maxLength is especially important."
+        },
+        "culturalReadinessScore": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 10,
+          "description": "Assigned after completing the universal checklist. Sum of five category scores (0–2 each). Required before content can advance to cultural-review stage."
+        },
+        "localeReadiness": {
+          "type": "array",
+          "description": "Per-locale review results. Separate from the source readiness score.",
+          "items": {
+            "type": "object",
+            "required": ["locale", "status", "reviewedBy", "reviewedAt"],
+            "additionalProperties": false,
+            "properties": {
+              "locale":     { "type": "string", "pattern": "^[a-z]{2,3}(-[A-Za-z0-9]{2,8})*$" },
+              "status":     { "type": "string", "enum": ["approved", "approved-with-notes", "requires-rewrite"] },
+              "notes":      { "type": "string" },
+              "reviewedBy": { "type": "string" },
+              "reviewedAt": { "type": "string", "format": "date" }
+            }
+          }
+        }
+      },
+      "additionalProperties": false
+    }
+
+  },
+
+  "examples": [
+    {
+      "id": "label-btn-submit-quiz",
+      "type": "ui-label",
+      "meta": {
+        "language": "en",
+        "version": "1.0",
+        "status": "published",
+        "owner": "frontend-team",
+        "labelType": "button",
+        "formality": "informal",
+        "component": "QuizCard",
+        "updatedAt": "2026-10-15"
+      },
+      "content": {
+        "value": "Check my answer",
+        "maxLength": 20,
+        "context": "Primary action button on the quiz card. Appears after the learner selects an option. Triggers answer evaluation.",
+        "culturalNotes": "'Check my answer' is intentionally learner-owned phrasing (my). This first-person framing works in EN/IT/ES but should be reviewed for DE/NL where neutral imperative ('Check answer') is more natural."
+      },
+      "localizationFlags": {
+        "genderSensitive": false,
+        "expandable": false,
+        "culturalReadinessScore": 7
+      }
+    },
+    {
+      "id": "label-welcome-user",
+      "type": "ui-label",
+      "meta": {
+        "language": "en",
+        "version": "1.0",
+        "status": "cultural-review",
+        "owner": "content-team",
+        "labelType": "onboarding",
+        "formality": "informal",
+        "component": "Dashboard",
+        "updatedAt": "2026-10-15"
+      },
+      "content": {
+        "value": "Welcome back, {firstName}!",
+        "variables": [
+          {
+            "name": "firstName",
+            "description": "The learner's first name as entered during registration",
+            "example": "Sofia"
+          }
+        ],
+        "maxLength": 30,
+        "context": "Greeting shown at the top of the learner dashboard on return visits.",
+        "culturalNotes": "First name use in greetings is standard in EN/IT/ES casual register. In DE/NL professional contexts, using first name without formal introduction can feel presumptuous — consider making this configurable or defaulting to a neutral greeting in formal-register languages."
+      },
+      "localizationFlags": {
+        "genderSensitive": false,
+        "expandable": true,
+        "culturalReadinessScore": 6
+      }
+    }
+  ]
+}

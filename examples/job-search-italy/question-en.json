@@ -1,0 +1,94 @@
+[
+  {
+    "id": "question-cv-photo-italy",
+    "type": "question",
+    "meta": {
+      "language": "en",
+      "version": "1.0",
+      "status": "published",
+      "owner": "content-team",
+      "questionType": "true-false",
+      "formality": "informal",
+      "difficulty": "beginner",
+      "relatedLesson": "lesson-cv-italy-basics",
+      "updatedAt": "2026-10-15"
+    },
+    "content": {
+      "stem": "Including a professional photo on your CV is more common in Italy than in the UK or US.",
+      "correctAnswer": "true",
+      "explanation": "While not universal across all sectors, including a photo is significantly more common in Italy (and many other European countries) than in English-speaking markets, where it is often actively discouraged. Whether to include one depends on the job posting and company culture — if the ad requests a photo, include one; if it does not mention it, a photo is optional and omitting it is equally acceptable.",
+      "culturalNotes": "This question uses a comparison ('more common') rather than an absolute ('required') — the comparison is accurate and avoids overstating the norm. The explanation is neutral on whether to include a photo: it follows the job ad, not a blanket default. Do not strengthen to 'required' or 'safer to include' in any language version. Consistent with the lesson framing."
+    },
+    "localizationFlags": {
+      "scenarioDependent": true,
+      "containsProperNouns": true,
+      "containsIdiom": false,
+      "culturalReadinessScore": 7
+    }
+  },
+  {
+    "id": "question-cv-europass",
+    "type": "question",
+    "meta": {
+      "language": "en",
+      "version": "1.0",
+      "status": "published",
+      "owner": "content-team",
+      "questionType": "multiple-choice",
+      "formality": "informal",
+      "difficulty": "beginner",
+      "relatedLesson": "lesson-cv-italy-basics",
+      "updatedAt": "2026-10-15"
+    },
+    "content": {
+      "stem": "Which CV format is widely recognised by Italian employers and recommended as a reliable starting point?",
+      "options": [
+        { "id": "a", "text": "A two-page UK-style functional CV",        "correct": false },
+        { "id": "b", "text": "The Europass format",                      "correct": true  },
+        { "id": "c", "text": "A US-style one-page résumé",               "correct": false },
+        { "id": "d", "text": "A portfolio-style creative CV",            "correct": false }
+      ],
+      "explanation": "The Europass format is a standardised European CV template promoted by the EU. It is widely recognised by Italian employers and a reliable starting point, especially for job seekers new to the Italian market. For creative roles or international companies, a tailored CV can also be appropriate. You can download the Europass template free at europass.eu.",
+      "culturalNotes": "Europass is a pan-European reference — no localisation needed for the term itself. The explanation URL (europass.eu) is the same in all languages."
+    },
+    "localizationFlags": {
+      "scenarioDependent": false,
+      "containsProperNouns": true,
+      "containsIdiom": false,
+      "culturalReadinessScore": 9
+    }
+  },
+  {
+    "id": "question-cv-length-italy",
+    "type": "question",
+    "meta": {
+      "language": "en",
+      "version": "1.0",
+      "status": "published",
+      "owner": "content-team",
+      "questionType": "multiple-choice",
+      "formality": "informal",
+      "difficulty": "beginner",
+      "relatedLesson": "lesson-cv-italy-basics",
+      "updatedAt": "2026-10-15"
+    },
+    "content": {
+      "stem": "What is the typical length of an Italian CV?",
+      "options": [
+        { "id": "a", "text": "Half a page",  "correct": false },
+        { "id": "b", "text": "1–2 pages",    "correct": true  },
+        { "id": "c", "text": "3–4 pages",    "correct": false },
+        { "id": "d", "text": "5+ pages",     "correct": false }
+      ],
+      "explanation": "Italian CVs are typically 1–2 pages. The Europass template is designed with this length in mind. A CV significantly longer than 2 pages may be seen as unfocused by Italian recruiters.",
+      "hint": "Think about what you know about Europass templates.",
+      "culturalNotes": "Pure factual content. No cultural risk. Translate directly."
+    },
+    "localizationFlags": {
+      "scenarioDependent": false,
+      "containsProperNouns": false,
+      "containsIdiom": false,
+      "culturalReadinessScore": 10
+    }
+  }
+]

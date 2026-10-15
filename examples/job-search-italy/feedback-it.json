@@ -1,0 +1,74 @@
+[
+  {
+    "id": "feedback-cv-correct-it",
+    "type": "feedback",
+    "meta": {
+      "language": "it",
+      "version": "1.0",
+      "status": "published",
+      "owner": "content-team",
+      "feedbackType": "correct",
+      "formality": "informal",
+      "sourceLanguage": "en",
+      "sourceId": "feedback-cv-correct",
+      "updatedAt": "2026-10-15"
+    },
+    "content": {
+      "primary": "Esatto. In Italia, includere una foto professionale nel CV è prassi standard.",
+      "secondary": "Questo è diverso dalle norme britanniche e statunitensi, dove le foto di solito non vengono incluse.",
+      "toneIntent": "direct",
+      "culturalNotes": "Tono diretto e informativo. Nessuna modifica necessaria rispetto all'originale inglese."
+    },
+    "localizationFlags": {
+      "highCulturalRisk": false,
+      "containsIdiom": false,
+      "containsHumor": false,
+      "culturalReadinessScore": 9,
+      "localeReadiness": [
+        {
+          "locale": "it",
+          "status": "approved",
+          "notes": "Traduzione diretta approvata. Nessun problema culturale.",
+          "reviewedBy": "giulia.m",
+          "reviewedAt": "2026-10-12"
+        }
+      ]
+    }
+  },
+  {
+    "id": "feedback-cv-incorrect-it",
+    "type": "feedback",
+    "meta": {
+      "language": "it",
+      "version": "1.0",
+      "status": "published",
+      "owner": "content-team",
+      "feedbackType": "incorrect",
+      "formality": "informal",
+      "sourceLanguage": "en",
+      "sourceId": "feedback-cv-incorrect",
+      "updatedAt": "2026-10-15"
+    },
+    "content": {
+      "primary": "Non del tutto. Dai un'altra occhiata alle convenzioni del CV italiano.",
+      "secondary": "A differenza di molti altri paesi, i datori di lavoro italiani si aspettano di solito una foto professionale nel CV.",
+      "toneIntent": "neutral",
+      "culturalNotes": "Registro tu applicato. Il tono è neutro-informativo. La costruzione 'dai un'altra occhiata' è naturale in italiano informale."
+    },
+    "localizationFlags": {
+      "highCulturalRisk": false,
+      "containsIdiom": false,
+      "containsHumor": false,
+      "culturalReadinessScore": 8,
+      "localeReadiness": [
+        {
+          "locale": "it",
+          "status": "approved",
+          "notes": "Traduzione approvata. Tono neutro-informativo confermato per il pubblico italiano.",
+          "reviewedBy": "giulia.m",
+          "reviewedAt": "2026-10-12"
+        }
+      ]
+    }
+  }
+]

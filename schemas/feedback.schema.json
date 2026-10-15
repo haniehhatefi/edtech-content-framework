@@ -1,0 +1,204 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "edtech-cmf/feedback",
+  "title": "Feedback",
+  "description": "Response messages shown to learners after an action — correct, incorrect, hint, and encouragement. Culturally the most sensitive content type: tone of failure and success varies significantly across cultures.",
+  "type": "object",
+  "required": ["id", "type", "meta", "content", "localizationFlags"],
+  "additionalProperties": false,
+
+  "properties": {
+
+    "id": {
+      "type": "string",
+      "pattern": "^feedback-[a-z0-9-]+$"
+    },
+
+    "type": { "const": "feedback" },
+
+    "meta": {
+      "type": "object",
+      "required": ["language", "version", "status", "owner", "feedbackType", "formality"],
+      "properties": {
+        "language":     {
+          "type": "string",
+          "pattern": "^[a-z]{2,3}(-[A-Za-z0-9]{2,8})*$",
+          "description": "BCP-47 language tag. Examples: en, it, de, es-419, nl-BE"
+        },
+        "version":      { "type": "string", "pattern": "^\\d+\\.\\d+$" },
+        "status":       { "type": "string", "enum": ["draft", "cultural-review", "translation", "qa", "published", "archived"] },
+        "owner":        { "type": "string" },
+        "feedbackType": {
+          "type": "string",
+          "enum": ["correct", "incorrect", "partial", "hint", "encouragement", "completion"],
+          "description": "The moment this feedback appears in the learning flow"
+        },
+        "formality": {
+          "type": "string",
+          "enum": ["formal", "informal", "neutral"],
+          "description": "Register of address toward the learner. Must match the formality setting of the associated lesson and question."
+        },
+        "sourceLanguage": {
+          "type": "string",
+          "pattern": "^[a-z]{2,3}(-[A-Za-z0-9]{2,8})*$",
+          "description": "BCP-47 tag of the language this was adapted from. Omit if this is the source."
+        },
+        "sourceId":        { "type": "string", "description": "ID of the source feedback this was adapted from" },
+        "relatedQuestion": { "type": "string", "description": "ID of the question this feedback belongs to, if specific" },
+        "updatedAt":       { "type": "string", "format": "date" }
+      },
+      "additionalProperties": false
+    },
+
+    "content": {
+      "type": "object",
+      "required": ["primary", "toneIntent"],
+      "properties": {
+
+        "primary": {
+          "type": "string",
+          "description": "The main feedback message. Keep under 25 words. Must be actionable or affirming — never just 'Wrong.'"
+        },
+
+        "secondary": {
+          "type": "string",
+          "description": "Optional follow-up shown below primary. Explains the why or offers the next step."
+        },
+
+        "toneIntent": {
+          "type": "string",
+          "enum": ["encouraging", "neutral", "direct", "warm"],
+          "description": "The intended emotional register. Required. Cultural reviewers must confirm this tone is appropriate in the target language before translation proceeds."
+        },
+
+        "culturalNotes": {
+          "type": "string",
+          "description": "Required when highCulturalRisk is true. Explicit notes about tone assumptions and what must change per locale."
+        },
+
+        "avoidIn": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "pattern": "^[a-z]{2,3}(-[A-Za-z0-9]{2,8})*$"
+          },
+          "description": "Language codes where this exact message must NOT be used as-is. Triggers a full cultural rewrite instead of translation."
+        }
+
+      },
+      "additionalProperties": false
+    },
+
+    "localizationFlags": {
+      "type": "object",
+      "required": ["culturalReadinessScore"],
+      "description": "Required on every content item. Signals content adaptability before translation begins.",
+      "properties": {
+        "highCulturalRisk": {
+          "type": "boolean",
+          "description": "True when tone or idiom is likely to misfire in a different cultural context. When true, content.culturalNotes is required."
+        },
+        "containsIdiom":     { "type": "boolean" },
+        "containsHumor":     { "type": "boolean" },
+        "culturalReadinessScore": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 10,
+          "description": "Assigned after completing the universal checklist."
+        },
+        "localeReadiness": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": ["locale", "status", "reviewedBy", "reviewedAt"],
+            "additionalProperties": false,
+            "properties": {
+              "locale":     { "type": "string", "pattern": "^[a-z]{2,3}(-[A-Za-z0-9]{2,8})*$" },
+              "status":     { "type": "string", "enum": ["approved", "approved-with-notes", "requires-rewrite"] },
+              "notes":      { "type": "string" },
+              "reviewedBy": { "type": "string" },
+              "reviewedAt": { "type": "string", "format": "date" }
+            }
+          }
+        }
+      },
+      "additionalProperties": false
+    }
+
+  },
+
+  "if": {
+    "description": "When highCulturalRisk is true, content.culturalNotes is required.",
+    "type": "object",
+    "properties": {
+      "localizationFlags": {
+        "type": "object",
+        "properties": { "highCulturalRisk": { "type": "boolean", "const": true } },
+        "required": ["highCulturalRisk"]
+      }
+    },
+    "required": ["localizationFlags"]
+  },
+  "then": {
+    "type": "object",
+    "properties": {
+      "content": {
+        "type": "object",
+        "required": ["culturalNotes"]
+      }
+    }
+  },
+
+  "examples": [
+    {
+      "id": "feedback-correct-general",
+      "type": "feedback",
+      "meta": {
+        "language": "en",
+        "version": "1.0",
+        "status": "published",
+        "owner": "content-team",
+        "feedbackType": "correct",
+        "formality": "neutral",
+        "updatedAt": "2026-10-15"
+      },
+      "content": {
+        "primary": "Exactly right. The denominator tells you the total number of parts.",
+        "toneIntent": "direct",
+        "culturalNotes": "Neutral, informative tone. Safe for adaptation into all six target languages with minimal adjustment."
+      },
+      "localizationFlags": {
+        "highCulturalRisk": false,
+        "containsIdiom": false,
+        "containsHumor": false,
+        "culturalReadinessScore": 9
+      }
+    },
+    {
+      "id": "feedback-incorrect-encouragement",
+      "type": "feedback",
+      "meta": {
+        "language": "en",
+        "version": "1.0",
+        "status": "cultural-review",
+        "owner": "content-team",
+        "feedbackType": "incorrect",
+        "formality": "informal",
+        "updatedAt": "2026-10-15"
+      },
+      "content": {
+        "primary": "Not quite. Take another look at which number is on the bottom.",
+        "secondary": "Remember: the denominator is always the bottom number of the fraction.",
+        "toneIntent": "encouraging",
+        "culturalNotes": "Original draft used an exclamation mark ('Not quite!'). Removed after cultural review — exclamation marks used for encouragement can read as condescending in DE/NL and overly casual in SV. The neutral version here transfers safely to all six target languages.",
+        "avoidIn": []
+      },
+      "localizationFlags": {
+        "highCulturalRisk": false,
+        "containsIdiom": false,
+        "containsHumor": false,
+        "culturalReadinessScore": 8
+      }
+    }
+  ]
+}

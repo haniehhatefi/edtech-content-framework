@@ -1,0 +1,132 @@
+[
+  {
+    "id": "label-btn-check-answer",
+    "type": "ui-label",
+    "meta": {
+      "language": "en",
+      "version": "1.0",
+      "status": "published",
+      "owner": "content-team",
+      "labelType": "button",
+      "formality": "neutral",
+      "updatedAt": "2026-10-15"
+    },
+    "content": {
+      "value": "Check answer",
+      "maxLength": 20,
+      "context": "Primary action button. Appears below a question. Learner clicks to submit their answer and see feedback."
+    },
+    "localizationFlags": {
+      "culturalReadinessScore": 10
+    }
+  },
+  {
+    "id": "label-btn-continue",
+    "type": "ui-label",
+    "meta": {
+      "language": "en",
+      "version": "1.0",
+      "status": "published",
+      "owner": "content-team",
+      "labelType": "navigation",
+      "formality": "neutral",
+      "updatedAt": "2026-10-15"
+    },
+    "content": {
+      "value": "Continue",
+      "maxLength": 15,
+      "context": "Navigation button. Appears after feedback is shown. Moves learner to the next item."
+    },
+    "localizationFlags": {
+      "culturalReadinessScore": 10
+    }
+  },
+  {
+    "id": "label-progress-lesson",
+    "type": "ui-label",
+    "meta": {
+      "language": "en",
+      "version": "1.0",
+      "status": "published",
+      "owner": "content-team",
+      "labelType": "status",
+      "formality": "neutral",
+      "updatedAt": "2026-10-15"
+    },
+    "content": {
+      "value": "Lesson {current} of {total}",
+      "maxLength": 30,
+      "context": "Progress indicator shown in the lesson header. Displays current lesson number and total. Example: 'Lesson 2 of 5'.",
+      "variables": [
+        { "name": "current", "description": "Current lesson number (1-based). Example: 2", "example": "2" },
+        { "name": "total",   "description": "Total number of lessons in the module. Example: 5", "example": "5" }
+      ]
+    },
+    "localizationFlags": {
+      "culturalReadinessScore": 9
+    }
+  },
+  {
+    "id": "label-status-correct",
+    "type": "ui-label",
+    "meta": {
+      "language": "en",
+      "version": "1.0",
+      "status": "published",
+      "owner": "content-team",
+      "labelType": "success",
+      "formality": "neutral",
+      "updatedAt": "2026-10-15"
+    },
+    "content": {
+      "value": "Correct",
+      "maxLength": 15,
+      "context": "Short status label shown in the feedback area when the learner's answer is correct. Displayed alongside the feedback message, not as a standalone element."
+    },
+    "localizationFlags": {
+      "culturalReadinessScore": 10
+    }
+  },
+  {
+    "id": "label-status-incorrect",
+    "type": "ui-label",
+    "meta": {
+      "language": "en",
+      "version": "1.0",
+      "status": "published",
+      "owner": "content-team",
+      "labelType": "status",
+      "formality": "neutral",
+      "updatedAt": "2026-10-15"
+    },
+    "content": {
+      "value": "Incorrect",
+      "maxLength": 15,
+      "context": "Short status label shown in the feedback area when the learner's answer is incorrect. The full explanation is in the feedback content item, not here."
+    },
+    "localizationFlags": {
+      "culturalReadinessScore": 9
+    }
+  },
+  {
+    "id": "label-module-complete",
+    "type": "ui-label",
+    "meta": {
+      "language": "en",
+      "version": "1.0",
+      "status": "published",
+      "owner": "content-team",
+      "labelType": "heading",
+      "formality": "neutral",
+      "updatedAt": "2026-10-15"
+    },
+    "content": {
+      "value": "Module complete",
+      "maxLength": 25,
+      "context": "Heading shown on the completion screen after the learner finishes all items in a module."
+    },
+    "localizationFlags": {
+      "culturalReadinessScore": 10
+    }
+  }
+]

@@ -1,0 +1,53 @@
+[
+  {
+    "id": "feedback-cv-correct",
+    "type": "feedback",
+    "meta": {
+      "language": "en",
+      "version": "1.0",
+      "status": "published",
+      "owner": "content-team",
+      "feedbackType": "correct",
+      "formality": "informal",
+      "updatedAt": "2026-10-15"
+    },
+    "content": {
+      "primary": "Correct. In Italy, including a professional photo on your CV is standard practice.",
+      "secondary": "This differs from UK and US norms, where photos are typically not included.",
+      "toneIntent": "direct",
+      "culturalNotes": "Direct and informative tone. No enthusiasm markers. Safe for all six target languages."
+    },
+    "localizationFlags": {
+      "highCulturalRisk": false,
+      "containsIdiom": false,
+      "containsHumor": false,
+      "culturalReadinessScore": 9
+    }
+  },
+  {
+    "id": "feedback-cv-incorrect",
+    "type": "feedback",
+    "meta": {
+      "language": "en",
+      "version": "1.0",
+      "status": "published",
+      "owner": "content-team",
+      "feedbackType": "incorrect",
+      "formality": "informal",
+      "updatedAt": "2026-10-15"
+    },
+    "content": {
+      "primary": "Not quite. Take another look at Italian CV conventions.",
+      "secondary": "Unlike in many other countries, Italian employers commonly expect a professional photo on the CV.",
+      "toneIntent": "neutral",
+      "culturalNotes": "Revised from original 'Not quite!' — exclamation removed after cultural review. The tone is now neutral-informative, which transfers safely to IT, DE, NL, and SV contexts without further rewrite.",
+      "avoidIn": []
+    },
+    "localizationFlags": {
+      "highCulturalRisk": false,
+      "containsIdiom": false,
+      "containsHumor": false,
+      "culturalReadinessScore": 8
+    }
+  }
+]

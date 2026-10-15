@@ -1,0 +1,198 @@
+[
+  {
+    "id": "label-btn-check-answer-it",
+    "type": "ui-label",
+    "meta": {
+      "language": "it",
+      "version": "1.0",
+      "status": "published",
+      "owner": "content-team",
+      "labelType": "button",
+      "formality": "neutral",
+      "sourceLanguage": "en",
+      "sourceId": "label-btn-check-answer",
+      "updatedAt": "2026-10-15"
+    },
+    "content": {
+      "value": "Controlla risposta",
+      "maxLength": 20,
+      "context": "Pulsante principale. Appare sotto una domanda. Il corsista lo preme per inviare la risposta e vedere il feedback."
+    },
+    "localizationFlags": {
+      "culturalReadinessScore": 10,
+      "localeReadiness": [
+        {
+          "locale": "it",
+          "status": "approved",
+          "notes": "18 caratteri — entro il limite di 20. Imperativo diretto standard per i pulsanti in italiano.",
+          "reviewedBy": "giulia.m",
+          "reviewedAt": "2026-10-15"
+        }
+      ]
+    }
+  },
+  {
+    "id": "label-btn-continue-it",
+    "type": "ui-label",
+    "meta": {
+      "language": "it",
+      "version": "1.0",
+      "status": "published",
+      "owner": "content-team",
+      "labelType": "navigation",
+      "formality": "neutral",
+      "sourceLanguage": "en",
+      "sourceId": "label-btn-continue",
+      "updatedAt": "2026-10-15"
+    },
+    "content": {
+      "value": "Continua",
+      "maxLength": 15,
+      "context": "Pulsante di navigazione. Appare dopo la visualizzazione del feedback. Porta il corsista all'elemento successivo."
+    },
+    "localizationFlags": {
+      "culturalReadinessScore": 10,
+      "localeReadiness": [
+        {
+          "locale": "it",
+          "status": "approved",
+          "notes": "8 caratteri. Traduzione diretta.",
+          "reviewedBy": "giulia.m",
+          "reviewedAt": "2026-10-15"
+        }
+      ]
+    }
+  },
+  {
+    "id": "label-progress-lesson-it",
+    "type": "ui-label",
+    "meta": {
+      "language": "it",
+      "version": "1.0",
+      "status": "published",
+      "owner": "content-team",
+      "labelType": "status",
+      "formality": "neutral",
+      "sourceLanguage": "en",
+      "sourceId": "label-progress-lesson",
+      "updatedAt": "2026-10-15"
+    },
+    "content": {
+      "value": "Lezione {current} di {total}",
+      "maxLength": 30,
+      "context": "Indicatore di avanzamento visualizzato nell'intestazione della lezione. Mostra il numero della lezione corrente e il totale. Esempio: 'Lezione 2 di 5'.",
+      "variables": [
+        { "name": "current", "description": "Numero della lezione corrente (a partire da 1). Esempio: 2", "example": "2" },
+        { "name": "total",   "description": "Numero totale di lezioni nel modulo. Esempio: 5", "example": "5" }
+      ]
+    },
+    "localizationFlags": {
+      "culturalReadinessScore": 9,
+      "localeReadiness": [
+        {
+          "locale": "it",
+          "status": "approved",
+          "notes": "La struttura 'X di Y' è naturale in italiano. Placeholder conservati identici all'originale.",
+          "reviewedBy": "giulia.m",
+          "reviewedAt": "2026-10-15"
+        }
+      ]
+    }
+  },
+  {
+    "id": "label-status-correct-it",
+    "type": "ui-label",
+    "meta": {
+      "language": "it",
+      "version": "1.0",
+      "status": "published",
+      "owner": "content-team",
+      "labelType": "success",
+      "formality": "neutral",
+      "sourceLanguage": "en",
+      "sourceId": "label-status-correct",
+      "updatedAt": "2026-10-15"
+    },
+    "content": {
+      "value": "Corretto",
+      "maxLength": 15,
+      "context": "Etichetta di stato breve mostrata nell'area del feedback quando la risposta del corsista è corretta."
+    },
+    "localizationFlags": {
+      "culturalReadinessScore": 10,
+      "localeReadiness": [
+        {
+          "locale": "it",
+          "status": "approved",
+          "notes": "7 caratteri. Traduzione diretta.",
+          "reviewedBy": "giulia.m",
+          "reviewedAt": "2026-10-15"
+        }
+      ]
+    }
+  },
+  {
+    "id": "label-status-incorrect-it",
+    "type": "ui-label",
+    "meta": {
+      "language": "it",
+      "version": "1.0",
+      "status": "published",
+      "owner": "content-team",
+      "labelType": "status",
+      "formality": "neutral",
+      "sourceLanguage": "en",
+      "sourceId": "label-status-incorrect",
+      "updatedAt": "2026-10-15"
+    },
+    "content": {
+      "value": "Errato",
+      "maxLength": 15,
+      "context": "Etichetta di stato breve mostrata nell'area del feedback quando la risposta del corsista non è corretta. La spiegazione completa si trova nel contenuto del feedback."
+    },
+    "localizationFlags": {
+      "culturalReadinessScore": 9,
+      "localeReadiness": [
+        {
+          "locale": "it",
+          "status": "approved-with-notes",
+          "notes": "Scelto 'Errato' (neutro) invece di 'Sbagliato' (più diretto) — più formalmente neutro come etichetta di stato.",
+          "reviewedBy": "giulia.m",
+          "reviewedAt": "2026-10-15"
+        }
+      ]
+    }
+  },
+  {
+    "id": "label-module-complete-it",
+    "type": "ui-label",
+    "meta": {
+      "language": "it",
+      "version": "1.0",
+      "status": "published",
+      "owner": "content-team",
+      "labelType": "heading",
+      "formality": "neutral",
+      "sourceLanguage": "en",
+      "sourceId": "label-module-complete",
+      "updatedAt": "2026-10-15"
+    },
+    "content": {
+      "value": "Modulo completato",
+      "maxLength": 25,
+      "context": "Titolo mostrato nella schermata di completamento dopo che il corsista ha terminato tutti gli elementi del modulo."
+    },
+    "localizationFlags": {
+      "culturalReadinessScore": 10,
+      "localeReadiness": [
+        {
+          "locale": "it",
+          "status": "approved",
+          "notes": "17 caratteri — entro il limite di 25. Participio passato 'completato' concorda con 'modulo' (maschile).",
+          "reviewedBy": "giulia.m",
+          "reviewedAt": "2026-10-15"
+        }
+      ]
+    }
+  }
+]

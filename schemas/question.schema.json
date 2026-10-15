@@ -1,0 +1,260 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "edtech-cmf/question",
+  "title": "Question",
+  "description": "An assessment item. Can be multiple-choice, true/false, or short input.",
+  "type": "object",
+  "required": ["id", "type", "meta", "content", "localizationFlags"],
+  "additionalProperties": false,
+
+  "properties": {
+
+    "id": {
+      "type": "string",
+      "pattern": "^question-[a-z0-9-]+$",
+      "description": "Stable identifier. Example: question-fraction-identify"
+    },
+
+    "type": { "const": "question" },
+
+    "meta": {
+      "type": "object",
+      "required": ["language", "version", "status", "owner", "questionType", "formality"],
+      "properties": {
+        "language":     {
+          "type": "string",
+          "pattern": "^[a-z]{2,3}(-[A-Za-z0-9]{2,8})*$",
+          "description": "BCP-47 language tag. Examples: en, it, de, es-419, nl-BE"
+        },
+        "version":      { "type": "string", "pattern": "^\\d+\\.\\d+$" },
+        "status":       { "type": "string", "enum": ["draft", "cultural-review", "translation", "qa", "published", "archived"] },
+        "owner":        { "type": "string" },
+        "questionType": { "type": "string", "enum": ["multiple-choice", "true-false", "short-input"] },
+        "formality": {
+          "type": "string",
+          "enum": ["formal", "informal", "neutral"],
+          "description": "Register of address toward the learner. Must match the formality setting of the associated lesson."
+        },
+        "difficulty":    { "type": "string", "enum": ["beginner", "intermediate", "advanced"] },
+        "relatedLesson": { "type": "string", "description": "ID of the lesson this question assesses" },
+        "sourceLanguage": {
+          "type": "string",
+          "pattern": "^[a-z]{2,3}(-[A-Za-z0-9]{2,8})*$",
+          "description": "BCP-47 tag of the language this was adapted from. Omit if this is the source."
+        },
+        "sourceId":     { "type": "string", "description": "ID of the source question this was adapted from" },
+        "updatedAt":    { "type": "string", "format": "date" }
+      },
+      "additionalProperties": false
+    },
+
+    "content": {
+      "type": "object",
+      "required": ["stem"],
+      "properties": {
+
+        "stem": {
+          "type": "string",
+          "description": "The question text shown to the learner."
+        },
+
+        "options": {
+          "type": "array",
+          "description": "Required when questionType is multiple-choice. Min 2, max 5 options. Exactly one option must have correct: true.",
+          "minItems": 2,
+          "maxItems": 5,
+          "items": {
+            "type": "object",
+            "required": ["id", "text", "correct"],
+            "additionalProperties": false,
+            "properties": {
+              "id":      { "type": "string" },
+              "text":    { "type": "string" },
+              "correct": { "type": "boolean" }
+            }
+          }
+        },
+
+        "correctAnswer": {
+          "type": "string",
+          "description": "Required when questionType is true-false or short-input. The canonical correct answer."
+        },
+
+        "explanation": {
+          "type": "string",
+          "description": "Shown after the learner answers. Explains why the correct answer is correct. Always write this — it is the learning moment."
+        },
+
+        "hint": {
+          "type": "string",
+          "description": "Optional nudge shown on request. Should guide thinking without revealing the answer."
+        },
+
+        "culturalNotes": {
+          "type": "string",
+          "description": "Notes for translators: ambiguous wording, scenario-specific context, cultural assumptions in the stem or options."
+        }
+
+      },
+      "additionalProperties": false
+    },
+
+    "localizationFlags": {
+      "type": "object",
+      "required": ["culturalReadinessScore"],
+      "description": "Required on every content item. Signals content adaptability before translation begins.",
+      "properties": {
+        "scenarioDependent":    {
+          "type": "boolean",
+          "description": "True if the question relies on a culturally-specific scenario"
+        },
+        "containsProperNouns":  { "type": "boolean" },
+        "containsIdiom":        { "type": "boolean" },
+        "culturalReadinessScore": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 10,
+          "description": "Assigned after completing the universal checklist."
+        },
+        "localeReadiness": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": ["locale", "status", "reviewedBy", "reviewedAt"],
+            "additionalProperties": false,
+            "properties": {
+              "locale":     { "type": "string", "pattern": "^[a-z]{2,3}(-[A-Za-z0-9]{2,8})*$" },
+              "status":     { "type": "string", "enum": ["approved", "approved-with-notes", "requires-rewrite"] },
+              "notes":      { "type": "string" },
+              "reviewedBy": { "type": "string" },
+              "reviewedAt": { "type": "string", "format": "date" }
+            }
+          }
+        }
+      },
+      "additionalProperties": false
+    }
+
+  },
+
+  "allOf": [
+    {
+      "description": "When questionType is multiple-choice, options is required and at least one option must be marked correct.",
+      "if": {
+        "type": "object",
+        "properties": {
+          "meta": {
+            "type": "object",
+            "properties": { "questionType": { "type": "string", "const": "multiple-choice" } },
+            "required": ["questionType"]
+          }
+        },
+        "required": ["meta"]
+      },
+      "then": {
+        "type": "object",
+        "properties": {
+          "content": {
+            "type": "object",
+            "required": ["options"],
+            "properties": {
+              "options": {
+                "type": "array",
+                "contains": {
+                  "type": "object",
+                  "properties": { "correct": { "const": true } },
+                  "required": ["correct"]
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "description": "When questionType is true-false or short-input, correctAnswer is required.",
+      "if": {
+        "type": "object",
+        "properties": {
+          "meta": {
+            "type": "object",
+            "properties": { "questionType": { "type": "string", "enum": ["true-false", "short-input"] } },
+            "required": ["questionType"]
+          }
+        },
+        "required": ["meta"]
+      },
+      "then": {
+        "type": "object",
+        "properties": {
+          "content": {
+            "type": "object",
+            "required": ["correctAnswer"]
+          }
+        }
+      }
+    }
+  ],
+
+  "examples": [
+    {
+      "id": "question-fraction-identify",
+      "type": "question",
+      "meta": {
+        "language": "en",
+        "version": "1.0",
+        "status": "published",
+        "owner": "content-team",
+        "questionType": "multiple-choice",
+        "formality": "informal",
+        "difficulty": "beginner",
+        "relatedLesson": "lesson-intro-fractions",
+        "updatedAt": "2026-10-15"
+      },
+      "content": {
+        "stem": "In the fraction 3/8, what is the denominator?",
+        "options": [
+          { "id": "a", "text": "3",  "correct": false },
+          { "id": "b", "text": "8",  "correct": true  },
+          { "id": "c", "text": "11", "correct": false },
+          { "id": "d", "text": "38", "correct": false }
+        ],
+        "explanation": "The denominator is the bottom number of a fraction. It tells you how many equal parts the whole is divided into. Here, 8 is the bottom number.",
+        "culturalNotes": "No cultural adaptation needed. Pure math terminology."
+      },
+      "localizationFlags": {
+        "scenarioDependent": false,
+        "containsProperNouns": false,
+        "containsIdiom": false,
+        "culturalReadinessScore": 10
+      }
+    },
+    {
+      "id": "question-cv-photo-italy",
+      "type": "question",
+      "meta": {
+        "language": "en",
+        "version": "1.0",
+        "status": "published",
+        "owner": "content-team",
+        "questionType": "true-false",
+        "formality": "informal",
+        "difficulty": "beginner",
+        "relatedLesson": "lesson-cv-italy-basics",
+        "updatedAt": "2026-10-15"
+      },
+      "content": {
+        "stem": "Including a professional photo on your CV is more common in Italy than in the UK or US.",
+        "correctAnswer": "true",
+        "explanation": "While not universal, including a photo is significantly more common in Italy (and many other European countries) than in English-speaking markets, where it is often discouraged. Whether to include one depends on the employer and sector — when in doubt, it is safer to include one for the Italian market.",
+        "culturalNotes": "This question is intentionally scoped to a comparison statement ('more common') rather than an absolute rule, which would be inaccurate. The explanation acknowledges context-dependence."
+      },
+      "localizationFlags": {
+        "scenarioDependent": true,
+        "containsProperNouns": true,
+        "containsIdiom": false,
+        "culturalReadinessScore": 6
+      }
+    }
+  ]
+}

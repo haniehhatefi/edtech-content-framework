@@ -1,0 +1,8 @@
+{
+  "devDependencies": {
+    "ajv": "^8.20.0"
+  },
+  "dependencies": {
+    "ajv-formats": "^3.0.1"
+  }
+}

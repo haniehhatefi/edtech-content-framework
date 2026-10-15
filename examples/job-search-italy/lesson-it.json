@@ -1,0 +1,65 @@
+{
+  "id": "lesson-cv-italy-basics-it",
+  "type": "lesson",
+  "meta": {
+    "title": "Il tuo CV per il mercato del lavoro italiano",
+    "language": "it",
+    "version": "1.2",
+    "status": "published",
+    "owner": "content-team",
+    "formality": "informal",
+    "sourceLanguage": "en",
+    "sourceId": "lesson-cv-italy-basics",
+    "tags": ["job-search", "cv", "italy", "beginner"],
+    "updatedAt": "2026-10-15"
+  },
+  "content": {
+    "objective": "Identificare tre differenze principali tra un CV internazionale standard e un CV italiano.",
+    "body": [
+      {
+        "blockType": "text",
+        "value": "Cercare lavoro in Italia significa capire che i datori di lavoro italiani hanno aspettative diverse da quelle a cui potresti essere abituato. Un CV che funziona bene nel tuo paese d'origine potrebbe non essere efficace in Italia — non perché sia peggiore, ma perché il formato comunica qualcosa di diverso."
+      },
+      {
+        "blockType": "callout",
+        "value": "Il CV italiano è di solito di 1–2 pagine e segue il formato Europass oppure una struttura cronologica chiara. Il modello Europass è ampiamente riconosciuto ed è un punto di partenza affidabile — specialmente per chi si avvicina per la prima volta al mercato del lavoro italiano."
+      },
+      {
+        "blockType": "text",
+        "value": "Tre cose che potrebbero sorprenderti:\n\n**Foto:** Includere una foto professionale è più comune in Italia che in altri paesi come il Regno Unito o gli Stati Uniti, dove spesso è sconsigliata. La scelta dipende dall'offerta di lavoro e dalla cultura aziendale. Segui le indicazioni del datore di lavoro: se l'annuncio la richiede, includila; se non la menziona, la foto è facoltativa — ometterla non è penalizzante e non comporta solitamente un'esclusione dalla selezione.\n\n**Data di nascita:** Molti CV italiani includono la data di nascita nella sezione dei dati personali, anche se questa pratica si sta facendo meno comune. Se preferisci non includerla, di solito è accettabile.\n\n**Stato civile:** Compare su alcuni CV italiani, in particolare nei settori più tradizionali, ma non è obbligatorio e sta diventando sempre meno frequente tra i professionisti più giovani e nelle aziende internazionali. Non sei tenuto a indicarlo."
+      },
+      {
+        "blockType": "image",
+        "value": "cv-comparison-diagram.png",
+        "alt": "Confronto tra un CV internazionale e un CV italiano. La versione italiana include una foto nell'angolo in alto a destra e una sezione con i dati personali sotto le informazioni di contatto.",
+        "caption": "Sinistra: CV internazionale standard. Destra: formato tipico del CV italiano."
+      },
+      {
+        "blockType": "example",
+        "value": "Fatima, 31 anni, si è trasferita dal Marocco a Milano. Il suo CV internazionale era ottimo — ma è rimasta sorpresa quando un recruiter le ha chiesto di reinviarlo con una foto. Dopo aver aggiornato il formato, ha iniziato a ricevere le prime risposte."
+      }
+    ],
+    "keyTerms": [
+      { "term": "Europass", "definition": "Un formato di CV standardizzato promosso dall'UE. Ampiamente riconosciuto dai datori di lavoro italiani. Disponibile gratuitamente su europass.eu." },
+      { "term": "curriculum vitae", "definition": "Il termine italiano e latino per CV. Spesso abbreviato come CV in entrambi i contesti." }
+    ],
+    "culturalNotes": "Traduzione approvata da revisore madrelingua. Il registro tu è stato applicato in modo coerente. La storia di Fatima è stata mantenuta — il pubblico della piattaforma include utenti con background migratori. NOTA TECNICA: il participio passato *trasferita* è corretto — si usa *essere* con i verbi di moto riflessivi, quindi il participio concorda con il soggetto femminile (Fatima). La forma *iniziato* in *ha iniziato a ricevere* è corretta: con i verbi aspettuali (*iniziare*, *cominciare*, *finire*) seguiti da infinito, si usa *avere* e il participio passato è invariabile perché non c'è alcun oggetto diretto — *a ricevere* è un complemento infinitivale, non un oggetto diretto postposto."
+  },
+  "localizationFlags": {
+    "containsHumor": false,
+    "containsLocalExamples": true,
+    "containsProperNouns": true,
+    "containsIdiom": false,
+    "textDirection": "ltr",
+    "culturalReadinessScore": 7,
+    "localeReadiness": [
+      {
+        "locale": "it",
+        "status": "approved",
+        "notes": "Traduzione completata. Registro tu applicato correttamente. Participi passati verificati.",
+        "reviewedBy": "giulia.m",
+        "reviewedAt": "2026-10-12"
+      }
+    ]
+  }
+}
