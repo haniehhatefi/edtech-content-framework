@@ -4,7 +4,7 @@ A practical framework for small EdTech teams (5–7 people) to create, manage, a
 
 ## The Problem
 
-Small EdTech teams typically build content in one language — then discover they need to localize. Without a system, this leads to:
+Small EdTech teams typically build content in one language, then discover they need to localize. Or they may not have the budget to work with localization agencies or hire a professional. Without a system, this leads to:
 - Full rewrites after production because content was never designed for adaptation
 - No clear ownership of who reviews, approves, or updates content
 - Translations that are linguistically correct but culturally misaligned
