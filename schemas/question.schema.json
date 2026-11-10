@@ -1,0 +1,268 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "edtech-cmf/question",
+  "title": "Question",
+  "description": "An assessment item. Supports multiple-choice and true/false question types.",
+  "type": "object",
+  "required": ["id", "type", "meta", "content", "localizationFlags"],
+  "additionalProperties": false,
+
+  "definitions": {
+    "localeReadinessItem": {
+      "type": "object",
+      "required": ["locale", "status", "reviewedBy", "reviewedAt"],
+      "additionalProperties": false,
+      "properties": {
+        "locale":        { "type": "string", "pattern": "^[a-z]{2,3}(-[A-Za-z0-9]{2,8})*$" },
+        "status":        { "type": "string", "enum": ["approved", "approved-with-notes", "requires-rewrite"] },
+        "notes":         { "type": "string" },
+        "reviewedBy":    { "type": "string" },
+        "reviewedAt":    { "type": "string", "format": "date" },
+        "sourceVersion": {
+          "type": "string",
+          "pattern": "^\\d+\\.\\d+$",
+          "description": "Version of the source file at the time this locale was reviewed. When source advances past this, the translation is flagged as stale by the validator."
+        },
+        "translatorQuery": {
+          "type": "object",
+          "description": "Populated when a translator identifies a structural issue in the source that blocks or degrades translation quality.",
+          "required": ["query", "raisedBy", "raisedAt"],
+          "additionalProperties": false,
+          "properties": {
+            "query":      { "type": "string" },
+            "raisedBy":   { "type": "string" },
+            "raisedAt":   { "type": "string", "format": "date" },
+            "resolution": { "type": "string" },
+            "resolvedBy": { "type": "string" },
+            "resolvedAt": { "type": "string", "format": "date" }
+          }
+        }
+      }
+    }
+  },
+
+  "properties": {
+
+    "id": {
+      "type": "string",
+      "pattern": "^question-[a-z0-9-]+$"
+    },
+
+    "type": {
+      "const": "question"
+    },
+
+    "meta": {
+      "type": "object",
+      "required": ["title", "language", "version", "status", "owner", "formality"],
+      "additionalProperties": false,
+      "properties": {
+        "title":          { "type": "string" },
+        "language":       { "type": "string", "pattern": "^[a-z]{2,3}(-[A-Za-z0-9]{2,8})*$" },
+        "version":        { "type": "string", "pattern": "^\\d+\\.\\d+$" },
+        "status":         {
+          "type": "string",
+          "enum": ["draft", "cultural-review", "translation-ready", "translation", "translator-query", "qa", "published", "archived"]
+        },
+        "owner":          { "type": "string" },
+        "formality":      { "type": "string", "enum": ["formal", "informal", "neutral"] },
+        "frozen":         {
+          "type": "boolean",
+          "description": "When true, the source content is locked. Must not be edited without bumping meta.version."
+        },
+        "icu":            {
+          "type": "boolean",
+          "description": "Content strings use ICU MessageFormat syntax. Not validated by current validator."
+        },
+        "sourceLanguage": { "type": "string", "pattern": "^[a-z]{2,3}(-[A-Za-z0-9]{2,8})*$" },
+        "sourceId":       { "type": "string" },
+        "tags":           { "type": "array", "items": { "type": "string" } },
+        "updatedAt":      { "type": "string", "format": "date" }
+      }
+    },
+
+    "content": {
+      "type": "object",
+      "required": ["questionType", "stem", "options", "correctAnswer"],
+      "additionalProperties": false,
+      "properties": {
+
+        "questionType": {
+          "type": "string",
+          "enum": ["multiple-choice", "true-false"],
+          "description": "Determines the shape of options and correctAnswer."
+        },
+
+        "stem": {
+          "type": "string",
+          "description": "The question text shown to the learner."
+        },
+
+        "options": {
+          "type": "array",
+          "description": "Answer choices. Exactly 2 for true-false; 2–5 for multiple-choice.",
+          "minItems": 2,
+          "maxItems": 5,
+          "items": {
+            "type": "object",
+            "required": ["id", "text"],
+            "additionalProperties": false,
+            "properties": {
+              "id":   { "type": "string", "pattern": "^[a-z]$", "description": "Single lowercase letter. Used in correctAnswer." },
+              "text": { "type": "string" }
+            }
+          }
+        },
+
+        "correctAnswer": {
+          "description": "ID(s) of the correct option(s). Constrained by questionType via allOf below.",
+          "oneOf": [
+            { "type": "string", "pattern": "^[a-z]$" },
+            { "type": "array",  "items": { "type": "string", "pattern": "^[a-z]$" }, "minItems": 1 }
+          ]
+        },
+
+        "explanation": {
+          "type": "string",
+          "description": "Shown to the learner after answering. Explain why the correct answer is correct, not just what it is."
+        },
+
+        "hint": {
+          "type": "string",
+          "description": "Shown before the learner answers, if requested."
+        },
+
+        "culturalNotes": {
+          "type": "string",
+          "description": "Reviewer-facing. Cultural assumptions embedded in the scenario; guidance for translators."
+        }
+
+      }
+    },
+
+    "localizationFlags": {
+      "type": "object",
+      "required": ["culturalReadinessScore"],
+      "additionalProperties": false,
+      "properties": {
+        "containsHumor":          { "type": "boolean" },
+        "containsLocalExamples":  { "type": "boolean" },
+        "containsProperNouns":    { "type": "boolean" },
+        "containsIdiom":          { "type": "boolean" },
+        "scenarioDependent":      {
+          "type": "boolean",
+          "description": "True if the question scenario assumes a specific cultural context (workplace norms, legal conventions, social practices)."
+        },
+        "textDirection":          { "type": "string", "enum": ["ltr", "rtl", "auto"], "default": "ltr" },
+        "culturalReadinessScore": { "type": "integer", "minimum": 0, "maximum": 10 },
+        "localeReadiness": {
+          "type": "array",
+          "items": { "$ref": "#/definitions/localeReadinessItem" }
+        }
+      }
+    }
+
+  },
+
+  "allOf": [
+    {
+      "if": {
+        "type": "object",
+        "properties": {
+          "content": {
+            "type": "object",
+            "properties": { "questionType": { "const": "true-false" } }
+          }
+        },
+        "required": ["content"]
+      },
+      "then": {
+        "type": "object",
+        "properties": {
+          "content": {
+            "type": "object",
+            "properties": {
+              "options": { "type": "array", "minItems": 2, "maxItems": 2 },
+              "correctAnswer": { "type": "string", "enum": ["a", "b"] }
+            }
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "type": "object",
+        "properties": {
+          "content": {
+            "type": "object",
+            "properties": { "questionType": { "const": "multiple-choice" } }
+          }
+        },
+        "required": ["content"]
+      },
+      "then": {
+        "type": "object",
+        "properties": {
+          "content": {
+            "type": "object",
+            "properties": {
+              "options": { "type": "array", "minItems": 2, "maxItems": 5 },
+              "correctAnswer": { "type": "string", "pattern": "^[a-z]$" }
+            }
+          }
+        }
+      }
+    }
+  ],
+
+  "examples": [
+    {
+      "id": "question-cv-photo-it",
+      "type": "question",
+      "meta": {
+        "title": "Should you include a photo in an Italian CV?",
+        "language": "en",
+        "version": "1.2",
+        "status": "translation-ready",
+        "frozen": true,
+        "owner": "content-team",
+        "formality": "informal",
+        "tags": ["job-search", "italy", "cv"],
+        "updatedAt": "2026-10-15"
+      },
+      "content": {
+        "questionType": "multiple-choice",
+        "stem": "You are applying for a marketing role in Italy and the job posting does not mention a photo. What should you do?",
+        "options": [
+          { "id": "a", "text": "Always include a professional headshot — it shows initiative." },
+          { "id": "b", "text": "Never include a photo — it increases the risk of discrimination claims." },
+          { "id": "c", "text": "It is optional. Including or omitting a photo are both acceptable." },
+          { "id": "d", "text": "Only include a photo if you are applying to an international company." }
+        ],
+        "correctAnswer": "c",
+        "explanation": "Whether to include a photo in an Italian CV depends on the posting and company type. If the job ad requests one, include it. If not mentioned, a photo is optional and omitting it is equally acceptable. Neither choice is inherently safer.",
+        "hint": "Consider what the job posting itself says about photos.",
+        "culturalNotes": "Italian CV photo norms are more nuanced than a single rule. The 'always include' norm exists in some traditional sectors; modern and international companies are increasingly neutral or opposed. Do not translate 'optional' as 'recommended' or 'safer to include' in any language."
+      },
+      "localizationFlags": {
+        "containsHumor": false,
+        "containsLocalExamples": true,
+        "containsProperNouns": false,
+        "containsIdiom": false,
+        "scenarioDependent": true,
+        "textDirection": "ltr",
+        "culturalReadinessScore": 6,
+        "localeReadiness": [
+          {
+            "locale": "it",
+            "status": "approved-with-notes",
+            "notes": "Scenario retained. Translated 'optional' as 'facoltativo' — do not use 'consigliato'. Formality: informal register (tu) confirmed.",
+            "reviewedBy": "giulia.m",
+            "reviewedAt": "2026-10-15",
+            "sourceVersion": "1.2"
+          }
+        ]
+      }
+    }
+  ]
+}

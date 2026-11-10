@@ -1,0 +1,63 @@
+{
+  "id": "lesson-cv-italy-basics",
+  "type": "lesson",
+  "meta": {
+    "title": "Your CV for the Italian job market",
+    "language": "en",
+    "version": "1.2",
+    "status": "published",
+    "owner": "content-team",
+    "formality": "informal",
+    "tags": ["job-search", "cv", "italy", "beginner"],
+    "updatedAt": "2026-10-15"
+  },
+  "content": {
+    "objective": "Identify three key differences between a standard international CV and an Italian CV.",
+    "body": [
+      {
+        "blockType": "text",
+        "value": "Applying for jobs in Italy means understanding that Italian employers have different expectations from what you may be used to. A CV that works in the UK, Germany, or Poland may not land well in Italy — not because it is worse, but because the format signals something different."
+      },
+      {
+        "blockType": "callout",
+        "value": "Italian CVs are typically 1–2 pages and follow the Europass format or a clear chronological structure. The Europass template is widely recognised and a reliable starting point — especially if you are new to the Italian market."
+      },
+      {
+        "blockType": "text",
+        "value": "Three things you may not expect:\n\n**Photo:** Including a professional photo is more common in Italy than in the UK or US, where it is often discouraged. Whether to include one depends on the job posting and company culture. Follow the employer's lead: if the job ad requests a photo, include one; if it does not mention it, a photo is optional — not including one is equally acceptable and will not typically disqualify you.\n\n**Date of birth:** Many Italian CVs include date of birth in the personal details section, though this is becoming less universal. If you prefer not to include it, it is usually acceptable to leave it out.\n\n**Marital status:** This appears on some Italian CVs — particularly in more traditional sectors — but it is not required and is increasingly uncommon among younger professionals and in international companies. You are not obligated to include it."
+      },
+      {
+        "blockType": "image",
+        "value": "cv-comparison-diagram.png",
+        "alt": "Side-by-side comparison of a UK CV and an Italian CV. The Italian version includes a photo in the top right corner and a personal details section below the contact information.",
+        "caption": "Left: standard UK/international CV. Right: typical Italian CV format."
+      },
+      {
+        "blockType": "example",
+        "value": "Fatima, 31, moved from Morocco to Milan. Her international CV was strong — but she was surprised when a recruiter asked her to resubmit with a photo. Once she updated the format, she started getting callbacks."
+      }
+    ],
+    "keyTerms": [
+      { "term": "Europass", "definition": "A standardised European CV format promoted by the EU. Widely recognised by Italian employers. Available free at europass.eu." },
+      { "term": "curriculum vitae", "definition": "The Italian/Latin term for CV. Often abbreviated as CV in both Italian and English contexts." }
+    ],
+    "culturalNotes": "The persona examples use diverse names (Fatima, Andrzej, Marco) to reflect the immigrant job-seeker audience. Retain name diversity across target language adaptations. The Europass reference is pan-European and does not require localisation. The photo/DOB norms are Italy-specific and should NOT be translated as generic advice for other markets — this content is explicitly scoped to the Italian context."
+  },
+  "localizationFlags": {
+    "containsHumor": false,
+    "containsLocalExamples": true,
+    "containsProperNouns": true,
+    "containsIdiom": false,
+    "textDirection": "ltr",
+    "culturalReadinessScore": 7,
+    "localeReadiness": [
+      {
+        "locale": "it",
+        "status": "approved",
+        "notes": "Content is explicitly about Italian job market norms. All local references are intentional. tu register confirmed. Fatima example retained — appropriate for the platform audience.",
+        "reviewedBy": "giulia.m",
+        "reviewedAt": "2026-10-10"
+      }
+    ]
+  }
+}

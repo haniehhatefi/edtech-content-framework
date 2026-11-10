@@ -1,0 +1,251 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "edtech-cmf/feedback",
+  "title": "Feedback",
+  "description": "A response message shown to learners after an assessment interaction. Covers correct, incorrect, and hint variants.",
+  "type": "object",
+  "required": ["id", "type", "meta", "content", "localizationFlags"],
+  "additionalProperties": false,
+
+  "definitions": {
+    "localeReadinessItem": {
+      "type": "object",
+      "required": ["locale", "status", "reviewedBy", "reviewedAt"],
+      "additionalProperties": false,
+      "properties": {
+        "locale":        { "type": "string", "pattern": "^[a-z]{2,3}(-[A-Za-z0-9]{2,8})*$" },
+        "status":        { "type": "string", "enum": ["approved", "approved-with-notes", "requires-rewrite"] },
+        "notes":         { "type": "string" },
+        "reviewedBy":    { "type": "string" },
+        "reviewedAt":    { "type": "string", "format": "date" },
+        "sourceVersion": {
+          "type": "string",
+          "pattern": "^\\d+\\.\\d+$",
+          "description": "Version of the source file at the time this locale was reviewed. When source advances past this, the translation is flagged as stale by the validator."
+        },
+        "translatorQuery": {
+          "type": "object",
+          "description": "Populated when a translator identifies a structural issue in the source that blocks or degrades translation quality.",
+          "required": ["query", "raisedBy", "raisedAt"],
+          "additionalProperties": false,
+          "properties": {
+            "query":      { "type": "string" },
+            "raisedBy":   { "type": "string" },
+            "raisedAt":   { "type": "string", "format": "date" },
+            "resolution": { "type": "string" },
+            "resolvedBy": { "type": "string" },
+            "resolvedAt": { "type": "string", "format": "date" }
+          }
+        }
+      }
+    }
+  },
+
+  "properties": {
+
+    "id": {
+      "type": "string",
+      "pattern": "^feedback-[a-z0-9-]+$"
+    },
+
+    "type": {
+      "const": "feedback"
+    },
+
+    "meta": {
+      "type": "object",
+      "required": ["title", "language", "version", "status", "owner", "formality"],
+      "additionalProperties": false,
+      "properties": {
+        "title":          { "type": "string" },
+        "language":       { "type": "string", "pattern": "^[a-z]{2,3}(-[A-Za-z0-9]{2,8})*$" },
+        "version":        { "type": "string", "pattern": "^\\d+\\.\\d+$" },
+        "status":         {
+          "type": "string",
+          "enum": ["draft", "cultural-review", "translation-ready", "translation", "translator-query", "qa", "published", "archived"]
+        },
+        "owner":          { "type": "string" },
+        "formality":      { "type": "string", "enum": ["formal", "informal", "neutral"] },
+        "frozen":         {
+          "type": "boolean",
+          "description": "When true, the source content is locked. Must not be edited without bumping meta.version."
+        },
+        "icu":            {
+          "type": "boolean",
+          "description": "Content strings use ICU MessageFormat syntax. Not validated by current validator."
+        },
+        "sourceLanguage": { "type": "string", "pattern": "^[a-z]{2,3}(-[A-Za-z0-9]{2,8})*$" },
+        "sourceId":       { "type": "string" },
+        "tags":           { "type": "array", "items": { "type": "string" } },
+        "updatedAt":      { "type": "string", "format": "date" }
+      }
+    },
+
+    "content": {
+      "type": "object",
+      "required": ["feedbackType", "message"],
+      "additionalProperties": false,
+      "properties": {
+
+        "feedbackType": {
+          "type": "string",
+          "enum": ["correct", "incorrect", "hint", "partial"],
+          "description": "The trigger context for this feedback. correct: shown on a right answer. incorrect: shown on a wrong answer. hint: shown proactively before answering. partial: shown when the answer is partially correct."
+        },
+
+        "message": {
+          "type": "string",
+          "description": "The feedback text shown to the learner. Keep it constructive and actionable — especially for incorrect responses."
+        },
+
+        "encouragement": {
+          "type": "string",
+          "description": "Optional short motivational line appended to the message. Must feel natural, not forced. Omit if tone does not support it."
+        },
+
+        "highCulturalRisk": {
+          "type": "boolean",
+          "description": "Flag when the feedback message contains idioms, humor, or cultural references that are likely to need significant adaptation or replacement (not just translation). Triggers a required culturalNotes field."
+        },
+
+        "culturalNotes": {
+          "type": "string",
+          "description": "Required when highCulturalRisk is true. Guidance for translators: what makes this content culturally sensitive and what adaptation is expected."
+        },
+
+        "avoidIn": {
+          "type": "array",
+          "description": "Locales for which this feedback is inappropriate and should not be shown. The localized version must supply an alternative.",
+          "items": {
+            "type": "string",
+            "pattern": "^[a-z]{2,3}(-[A-Za-z0-9]{2,8})*$"
+          }
+        }
+
+      }
+    },
+
+    "localizationFlags": {
+      "type": "object",
+      "required": ["culturalReadinessScore"],
+      "additionalProperties": false,
+      "properties": {
+        "containsHumor":          { "type": "boolean" },
+        "containsLocalExamples":  { "type": "boolean" },
+        "containsProperNouns":    { "type": "boolean" },
+        "containsIdiom":          { "type": "boolean" },
+        "textDirection":          { "type": "string", "enum": ["ltr", "rtl", "auto"], "default": "ltr" },
+        "culturalReadinessScore": { "type": "integer", "minimum": 0, "maximum": 10 },
+        "localeReadiness": {
+          "type": "array",
+          "items": { "$ref": "#/definitions/localeReadinessItem" }
+        }
+      }
+    }
+
+  },
+
+  "if": {
+    "type": "object",
+    "properties": {
+      "content": {
+        "type": "object",
+        "properties": { "highCulturalRisk": { "const": true } },
+        "required": ["highCulturalRisk"]
+      }
+    },
+    "required": ["content"]
+  },
+  "then": {
+    "type": "object",
+    "properties": {
+      "content": {
+        "type": "object",
+        "required": ["culturalNotes"],
+        "properties": {
+          "culturalNotes": { "type": "string" }
+        }
+      }
+    }
+  },
+
+  "examples": [
+    {
+      "id": "feedback-cv-photo-correct",
+      "type": "feedback",
+      "meta": {
+        "title": "CV photo question — correct answer feedback",
+        "language": "en",
+        "version": "1.0",
+        "status": "translation-ready",
+        "frozen": true,
+        "owner": "content-team",
+        "formality": "informal",
+        "tags": ["job-search", "italy"],
+        "updatedAt": "2026-10-15"
+      },
+      "content": {
+        "feedbackType": "correct",
+        "message": "Exactly right. Whether to include a photo in an Italian CV depends on the posting — if it asks for one, include it; if not mentioned, it's optional. Neither choice is risky by default.",
+        "encouragement": "Good instinct to read the posting carefully.",
+        "highCulturalRisk": false
+      },
+      "localizationFlags": {
+        "containsHumor": false,
+        "containsLocalExamples": false,
+        "containsProperNouns": false,
+        "containsIdiom": false,
+        "textDirection": "ltr",
+        "culturalReadinessScore": 8,
+        "localeReadiness": [
+          {
+            "locale": "it",
+            "status": "approved",
+            "notes": "Register: informal (tu). 'Exactly right' translated as 'Esatto' — natural and not sycophantic.",
+            "reviewedBy": "giulia.m",
+            "reviewedAt": "2026-10-15",
+            "sourceVersion": "1.0"
+          }
+        ]
+      }
+    },
+    {
+      "id": "feedback-cv-photo-incorrect",
+      "type": "feedback",
+      "meta": {
+        "title": "CV photo question — incorrect answer feedback",
+        "language": "en",
+        "version": "1.0",
+        "status": "translation-ready",
+        "frozen": true,
+        "owner": "content-team",
+        "formality": "informal",
+        "tags": ["job-search", "italy"],
+        "updatedAt": "2026-10-15"
+      },
+      "content": {
+        "feedbackType": "incorrect",
+        "message": "Not quite. Italian CV photo norms aren't a simple rule — both including and omitting a photo are accepted when the posting doesn't specify. The key is to follow what the posting says.",
+        "highCulturalRisk": false
+      },
+      "localizationFlags": {
+        "containsHumor": false,
+        "containsLocalExamples": false,
+        "containsProperNouns": false,
+        "containsIdiom": false,
+        "textDirection": "ltr",
+        "culturalReadinessScore": 8,
+        "localeReadiness": [
+          {
+            "locale": "it",
+            "status": "approved",
+            "notes": "Register: informal (tu). 'Not quite' translated as 'Non esattamente'.",
+            "reviewedBy": "giulia.m",
+            "reviewedAt": "2026-10-15",
+            "sourceVersion": "1.0"
+          }
+        ]
+      }
+    }
+  ]
+}

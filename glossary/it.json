@@ -1,0 +1,75 @@
+{
+  "language": "it",
+  "sourceLanguage": "en",
+  "version": "1.0",
+  "updatedAt": "2026-10-15",
+  "maintainer": "giulia.m",
+  "terms": [
+    {
+      "sourceTerm": "numerator",
+      "translation": "numeratore",
+      "definition": "The top number in a fraction — how many parts are taken.",
+      "notes": "Gender: masculine (il numeratore). No regional variants within Italy.",
+      "domain": "mathematics"
+    },
+    {
+      "sourceTerm": "denominator",
+      "translation": "denominatore",
+      "definition": "The bottom number in a fraction — the total number of parts.",
+      "notes": "Gender: masculine (il denominatore).",
+      "domain": "mathematics"
+    },
+    {
+      "sourceTerm": "fraction",
+      "translation": "frazione",
+      "definition": "A number that represents a part of a whole, written as one integer over another.",
+      "notes": "Gender: feminine (la frazione).",
+      "domain": "mathematics"
+    },
+    {
+      "sourceTerm": "curriculum vitae",
+      "translation": "curriculum vitae",
+      "definition": "A document summarising a job applicant's education, experience, and skills.",
+      "notes": "Keep in Latin form — 'curriculum vitae' is the established term in Italian professional contexts. Abbreviation 'CV' is also widely accepted. Do not translate as 'résumé'.",
+      "forbidden": ["résumé", "vitae"],
+      "domain": "job-search"
+    },
+    {
+      "sourceTerm": "cover letter",
+      "translation": "lettera di presentazione",
+      "definition": "A document accompanying the CV, introducing the applicant and their motivation.",
+      "notes": "Some job postings use 'lettera motivazionale' — both are acceptable in Italian. Prefer 'lettera di presentazione' for consistency unless the posting specifies otherwise. 'Lettera di copertura' is a calque from English and sounds unnatural — avoid.",
+      "forbidden": ["lettera di copertura"],
+      "domain": "job-search"
+    },
+    {
+      "sourceTerm": "job posting",
+      "translation": "offerta di lavoro",
+      "definition": "A published advertisement for a vacant role.",
+      "notes": "Also acceptable: 'annuncio di lavoro'. Do not use 'posizione' alone — it refers to the role, not the advertisement.",
+      "domain": "job-search"
+    },
+    {
+      "sourceTerm": "hiring manager",
+      "translation": "responsabile delle assunzioni",
+      "definition": "The person at the company who decides on hiring for a specific role.",
+      "notes": "Also common: 'selezionatore' (recruiter, slightly broader). Use 'responsabile delle assunzioni' for precision when the source means the decision-maker, not an HR generalist.",
+      "domain": "job-search"
+    },
+    {
+      "sourceTerm": "objective",
+      "translation": "obiettivo",
+      "definition": "What the learner will be able to do after completing a lesson.",
+      "notes": "In educational context: 'obiettivo di apprendimento' (learning objective) for full phrase. Standalone 'obiettivo' is fine in lesson headings.",
+      "domain": "education"
+    },
+    {
+      "sourceTerm": "assessment",
+      "translation": "valutazione",
+      "definition": "A set of questions used to evaluate a learner's knowledge or skill.",
+      "notes": "Do not use 'esame' (exam) unless the content explicitly frames it as a formal test — 'valutazione' is neutral and appropriate for formative checks.",
+      "forbidden": ["esame"],
+      "domain": "education"
+    }
+  ]
+}

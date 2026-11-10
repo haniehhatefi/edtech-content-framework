@@ -1,0 +1,52 @@
+[
+  {
+    "id": "feedback-cv-correct",
+    "type": "feedback",
+    "meta": {
+      "title": "CV photo — correct answer feedback",
+      "language": "en",
+      "version": "2.0",
+      "status": "translation-ready",
+      "frozen": true,
+      "owner": "content-team",
+      "formality": "informal",
+      "updatedAt": "2026-10-15"
+    },
+    "content": {
+      "feedbackType": "correct",
+      "message": "Correct. In Italy, including a professional photo on your CV is standard practice — though whether to include one depends on the job posting and company type.",
+      "highCulturalRisk": false,
+      "culturalNotes": "Direct and informative tone. No enthusiasm markers. Slight hedge ('depends on the posting') added to avoid overstating the norm. Safe for all six target languages."
+    },
+    "localizationFlags": {
+      "containsIdiom": false,
+      "containsHumor": false,
+      "culturalReadinessScore": 9
+    }
+  },
+  {
+    "id": "feedback-cv-incorrect",
+    "type": "feedback",
+    "meta": {
+      "title": "CV photo — incorrect answer feedback",
+      "language": "en",
+      "version": "2.0",
+      "status": "translation-ready",
+      "frozen": true,
+      "owner": "content-team",
+      "formality": "informal",
+      "updatedAt": "2026-10-15"
+    },
+    "content": {
+      "feedbackType": "incorrect",
+      "message": "Not quite. Unlike in many English-speaking markets, Italian employers commonly expect a professional photo on the CV — though the norm varies by sector and company type.",
+      "highCulturalRisk": false,
+      "culturalNotes": "Exclamation removed after cultural review. Tone is neutral-informative, which transfers safely to IT, DE, NL and SV contexts without further rewrite."
+    },
+    "localizationFlags": {
+      "containsIdiom": false,
+      "containsHumor": false,
+      "culturalReadinessScore": 8
+    }
+  }
+]

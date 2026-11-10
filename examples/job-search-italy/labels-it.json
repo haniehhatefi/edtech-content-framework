@@ -1,0 +1,232 @@
+[
+  {
+    "id": "ui-btn-check-answer-it",
+    "type": "ui-label",
+    "meta": {
+      "title": "Check answer button (IT)",
+      "language": "it",
+      "version": "2.0",
+      "status": "published",
+      "owner": "content-team",
+      "formality": "neutral",
+      "sourceLanguage": "en",
+      "sourceId": "ui-btn-check-answer",
+      "updatedAt": "2026-10-15"
+    },
+    "content": {
+      "labelType": "button",
+      "value": "Verifica risposta",
+      "maxLength": {
+        "default": 20,
+        "de": 28,
+        "fi": 36,
+        "nl": 24
+      }
+    },
+    "localizationFlags": {
+      "culturalReadinessScore": 10,
+      "localeReadiness": [
+        {
+          "locale": "it",
+          "status": "approved",
+          "notes": "'Verifica risposta' preferred over 'Controlla risposta' — more natural for button context. Length 17 chars, within limit.",
+          "reviewedBy": "giulia.m",
+          "reviewedAt": "2026-10-15",
+          "sourceVersion": "2.0"
+        }
+      ]
+    }
+  },
+  {
+    "id": "ui-btn-continue-it",
+    "type": "ui-label",
+    "meta": {
+      "title": "Continue button (IT)",
+      "language": "it",
+      "version": "2.0",
+      "status": "published",
+      "owner": "content-team",
+      "formality": "neutral",
+      "sourceLanguage": "en",
+      "sourceId": "ui-btn-continue",
+      "updatedAt": "2026-10-15"
+    },
+    "content": {
+      "labelType": "button",
+      "value": "Continua",
+      "maxLength": {
+        "default": 15,
+        "de": 20,
+        "fi": 28
+      }
+    },
+    "localizationFlags": {
+      "culturalReadinessScore": 10,
+      "localeReadiness": [
+        {
+          "locale": "it",
+          "status": "approved",
+          "reviewedBy": "giulia.m",
+          "reviewedAt": "2026-10-15",
+          "sourceVersion": "2.0"
+        }
+      ]
+    }
+  },
+  {
+    "id": "ui-progress-lesson-it",
+    "type": "ui-label",
+    "meta": {
+      "title": "Lesson progress indicator (IT)",
+      "language": "it",
+      "version": "2.0",
+      "status": "published",
+      "owner": "content-team",
+      "formality": "neutral",
+      "sourceLanguage": "en",
+      "sourceId": "ui-progress-lesson",
+      "updatedAt": "2026-10-15"
+    },
+    "content": {
+      "labelType": "nav",
+      "value": "Lezione {current} di {total}",
+      "maxLength": { "default": 30, "it": 34, "de": 42, "fi": 55 },
+      "variables": [
+        {
+          "name": "{current}",
+          "description": "Numero della lezione corrente (intero)",
+          "example": "3"
+        },
+        {
+          "name": "{total}",
+          "description": "Numero totale di lezioni nel modulo (intero)",
+          "example": "7"
+        }
+      ]
+    },
+    "localizationFlags": {
+      "culturalReadinessScore": 10,
+      "localeReadiness": [
+        {
+          "locale": "it",
+          "status": "approved",
+          "notes": "Word order: 'Lezione {current} di {total}' is natural in Italian. Placeholders preserved.",
+          "reviewedBy": "giulia.m",
+          "reviewedAt": "2026-10-15",
+          "sourceVersion": "2.0"
+        }
+      ]
+    }
+  },
+  {
+    "id": "ui-status-correct-it",
+    "type": "ui-label",
+    "meta": {
+      "title": "Correct answer status label (IT)",
+      "language": "it",
+      "version": "2.0",
+      "status": "published",
+      "owner": "content-team",
+      "formality": "neutral",
+      "sourceLanguage": "en",
+      "sourceId": "ui-status-correct",
+      "updatedAt": "2026-10-15"
+    },
+    "content": {
+      "labelType": "notification",
+      "value": "Corretto",
+      "maxLength": {
+        "default": 12,
+        "de": 18,
+        "fi": 22
+      }
+    },
+    "localizationFlags": {
+      "culturalReadinessScore": 10,
+      "localeReadiness": [
+        {
+          "locale": "it",
+          "status": "approved",
+          "reviewedBy": "giulia.m",
+          "reviewedAt": "2026-10-15",
+          "sourceVersion": "2.0"
+        }
+      ]
+    }
+  },
+  {
+    "id": "ui-status-incorrect-it",
+    "type": "ui-label",
+    "meta": {
+      "title": "Incorrect answer status label (IT)",
+      "language": "it",
+      "version": "2.0",
+      "status": "published",
+      "owner": "content-team",
+      "formality": "neutral",
+      "sourceLanguage": "en",
+      "sourceId": "ui-status-incorrect",
+      "updatedAt": "2026-10-15"
+    },
+    "content": {
+      "labelType": "notification",
+      "value": "Non esattamente",
+      "maxLength": {
+        "default": 15,
+        "de": 20,
+        "fi": 28
+      }
+    },
+    "localizationFlags": {
+      "culturalReadinessScore": 10,
+      "localeReadiness": [
+        {
+          "locale": "it",
+          "status": "approved",
+          "notes": "'Non esattamente' (15 chars — at limit) chosen over 'Non proprio' — slightly more formal register, appropriate for mixed audiences.",
+          "reviewedBy": "giulia.m",
+          "reviewedAt": "2026-10-15",
+          "sourceVersion": "2.0"
+        }
+      ]
+    }
+  },
+  {
+    "id": "ui-module-complete-it",
+    "type": "ui-label",
+    "meta": {
+      "title": "Module complete heading (IT)",
+      "language": "it",
+      "version": "2.0",
+      "status": "published",
+      "owner": "content-team",
+      "formality": "informal",
+      "sourceLanguage": "en",
+      "sourceId": "ui-module-complete",
+      "updatedAt": "2026-10-15"
+    },
+    "content": {
+      "labelType": "heading",
+      "value": "Modulo completato!",
+      "maxLength": {
+        "default": 25,
+        "de": 35,
+        "fi": 45,
+        "nl": 30
+      }
+    },
+    "localizationFlags": {
+      "culturalReadinessScore": 10,
+      "localeReadiness": [
+        {
+          "locale": "it",
+          "status": "approved",
+          "notes": "Exclamation mark retained — appropriate for celebratory UI heading in Italian.",
+          "reviewedBy": "giulia.m",
+          "reviewedAt": "2026-10-15",
+          "sourceVersion": "2.0"
+        }
+      ]
+    }
+  }
+]

@@ -1,0 +1,133 @@
+[
+  {
+    "id": "question-cv-photo-italy-it",
+    "type": "question",
+    "meta": {
+      "title": "CV photo — common in Italy? (IT)",
+      "language": "it",
+      "version": "2.0",
+      "status": "published",
+      "owner": "content-team",
+      "formality": "informal",
+      "sourceLanguage": "en",
+      "sourceId": "question-cv-photo-italy",
+      "updatedAt": "2026-10-15"
+    },
+    "content": {
+      "questionType": "true-false",
+      "stem": "Includere una foto professionale nel CV è più comune in Italia che nel Regno Unito o negli Stati Uniti.",
+      "options": [
+        { "id": "a", "text": "Vero" },
+        { "id": "b", "text": "Falso" }
+      ],
+      "correctAnswer": "a",
+      "explanation": "Includere una foto è significativamente più comune in Italia (e in molti altri paesi europei) che nei mercati anglofoni, dove è spesso sconsigliata. Detto questo, la norma varia per settore: se l'annuncio richiede una foto, includetela; se non è menzionata, è facoltativa.",
+      "culturalNotes": "Usa 'più comune' e non 'obbligatorio' — confronto accurato che evita di sopravvalutare la norma. Non rafforzare con 'obbligatorio' o 'più sicuro includerla'."
+    },
+    "localizationFlags": {
+      "scenarioDependent": true,
+      "containsProperNouns": true,
+      "containsIdiom": false,
+      "culturalReadinessScore": 7,
+      "localeReadiness": [
+        {
+          "locale": "it",
+          "status": "approved",
+          "notes": "Vero/Falso used for true-false options — natural in Italian. 'Facoltativa' used for optional — correct. Formality: tu register confirmed.",
+          "reviewedBy": "giulia.m",
+          "reviewedAt": "2026-10-15",
+          "sourceVersion": "2.0"
+        }
+      ]
+    }
+  },
+  {
+    "id": "question-cv-europass-it",
+    "type": "question",
+    "meta": {
+      "title": "Europass CV format in Italy (IT)",
+      "language": "it",
+      "version": "2.0",
+      "status": "published",
+      "owner": "content-team",
+      "formality": "informal",
+      "sourceLanguage": "en",
+      "sourceId": "question-cv-europass",
+      "updatedAt": "2026-10-15"
+    },
+    "content": {
+      "questionType": "multiple-choice",
+      "stem": "Quale formato di CV è ampiamente riconosciuto dai datori di lavoro italiani ed è consigliato come punto di partenza affidabile?",
+      "options": [
+        { "id": "a", "text": "Un CV funzionale in stile britannico di due pagine" },
+        { "id": "b", "text": "Il formato Europass" },
+        { "id": "c", "text": "Un résumé in stile americano di una pagina" },
+        { "id": "d", "text": "Un CV creativo in stile portfolio" }
+      ],
+      "correctAnswer": "b",
+      "explanation": "Il formato Europass è un modello di CV standardizzato promosso dall'UE, ampiamente riconosciuto dai datori di lavoro italiani. È un punto di partenza affidabile, soprattutto per chi è nuovo nel mercato del lavoro italiano. Per ruoli creativi o aziende internazionali, un CV personalizzato può essere altrettanto appropriato. Scaricalo gratuitamente su europass.eu.",
+      "culturalNotes": "Il termine Europass non richiede adattamento. L'URL (europass.eu) è lo stesso in tutte le lingue."
+    },
+    "localizationFlags": {
+      "scenarioDependent": false,
+      "containsProperNouns": true,
+      "containsIdiom": false,
+      "culturalReadinessScore": 8,
+      "localeReadiness": [
+        {
+          "locale": "it",
+          "status": "approved",
+          "notes": "Traduzione diretta. 'Résumé' kept as loanword in option c — well understood in Italian professional contexts.",
+          "reviewedBy": "giulia.m",
+          "reviewedAt": "2026-10-15",
+          "sourceVersion": "2.0"
+        }
+      ]
+    }
+  },
+  {
+    "id": "question-cv-length-italy-it",
+    "type": "question",
+    "meta": {
+      "title": "Italian CV length convention (IT)",
+      "language": "it",
+      "version": "2.0",
+      "status": "published",
+      "owner": "content-team",
+      "formality": "informal",
+      "sourceLanguage": "en",
+      "sourceId": "question-cv-length-italy",
+      "updatedAt": "2026-10-15"
+    },
+    "content": {
+      "questionType": "multiple-choice",
+      "stem": "Qual è la lunghezza generalmente consigliata per un CV in Italia?",
+      "options": [
+        { "id": "a", "text": "Massimo una pagina" },
+        { "id": "b", "text": "Una o due pagine" },
+        { "id": "c", "text": "Da tre a quattro pagine" },
+        { "id": "d", "text": "Nessuna convenzione specifica — qualsiasi lunghezza va bene" }
+      ],
+      "correctAnswer": "b",
+      "explanation": "In Italia, una o due pagine è la lunghezza generalmente accettata per un CV. Una pagina è comune per i neolaureati; due pagine per i professionisti con esperienza. Tre o più pagine è in genere considerato troppo lungo, salvo che il ruolo richieda esplicitamente un profilo accademico o di ricerca dettagliato.",
+      "hint": "Pensa a quanta esperienza avrebbe in genere un candidato tipico.",
+      "culturalNotes": "Questa è una generalizzazione — le norme variano per settore. La risposta riflette la guida più ampiamente applicabile. Non ridurre a 'una pagina' in nessuna versione linguistica."
+    },
+    "localizationFlags": {
+      "scenarioDependent": true,
+      "containsProperNouns": false,
+      "containsIdiom": false,
+      "culturalReadinessScore": 8,
+      "localeReadiness": [
+        {
+          "locale": "it",
+          "status": "approved",
+          "notes": "Traduzione diretta approvata. Nessun problema culturale. Registro tu confermato.",
+          "reviewedBy": "giulia.m",
+          "reviewedAt": "2026-10-15",
+          "sourceVersion": "2.0"
+        }
+      ]
+    }
+  }
+]

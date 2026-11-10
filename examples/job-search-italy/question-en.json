@@ -1,0 +1,100 @@
+[
+  {
+    "id": "question-cv-photo-italy",
+    "type": "question",
+    "meta": {
+      "title": "CV photo — common in Italy?",
+      "language": "en",
+      "version": "2.0",
+      "status": "translation-ready",
+      "frozen": true,
+      "owner": "content-team",
+      "formality": "informal",
+      "updatedAt": "2026-10-15"
+    },
+    "content": {
+      "questionType": "true-false",
+      "stem": "Including a professional photo on your CV is more common in Italy than in the UK or US.",
+      "options": [
+        { "id": "a", "text": "True" },
+        { "id": "b", "text": "False" }
+      ],
+      "correctAnswer": "a",
+      "explanation": "Including a photo is significantly more common in Italy (and many other European countries) than in English-speaking markets, where it is often actively discouraged. That said, the norm varies by sector — if the posting asks for a photo, include one; if not mentioned, it is optional.",
+      "culturalNotes": "Uses 'more common' not 'required' — accurate comparison that avoids overstating the norm. Do not strengthen to 'required' or 'safer to include' in any language version."
+    },
+    "localizationFlags": {
+      "scenarioDependent": true,
+      "containsProperNouns": true,
+      "containsIdiom": false,
+      "culturalReadinessScore": 7
+    }
+  },
+  {
+    "id": "question-cv-europass",
+    "type": "question",
+    "meta": {
+      "title": "Europass CV format in Italy",
+      "language": "en",
+      "version": "2.0",
+      "status": "translation-ready",
+      "frozen": true,
+      "owner": "content-team",
+      "formality": "informal",
+      "updatedAt": "2026-10-15"
+    },
+    "content": {
+      "questionType": "multiple-choice",
+      "stem": "Which CV format is widely recognised by Italian employers and recommended as a reliable starting point?",
+      "options": [
+        { "id": "a", "text": "A two-page UK-style functional CV" },
+        { "id": "b", "text": "The Europass format" },
+        { "id": "c", "text": "A US-style one-page résumé" },
+        { "id": "d", "text": "A portfolio-style creative CV" }
+      ],
+      "correctAnswer": "b",
+      "explanation": "The Europass format is a standardised European CV template promoted by the EU. It is widely recognised by Italian employers and a reliable starting point, especially for those new to the Italian market. For creative roles or international companies, a tailored CV can also be appropriate. Download free at europass.eu.",
+      "culturalNotes": "Europass is a pan-European reference — the term needs no localisation. The URL (europass.eu) is the same in all languages."
+    },
+    "localizationFlags": {
+      "scenarioDependent": false,
+      "containsProperNouns": true,
+      "containsIdiom": false,
+      "culturalReadinessScore": 8
+    }
+  },
+  {
+    "id": "question-cv-length-italy",
+    "type": "question",
+    "meta": {
+      "title": "Italian CV length convention",
+      "language": "en",
+      "version": "2.0",
+      "status": "translation-ready",
+      "frozen": true,
+      "owner": "content-team",
+      "formality": "informal",
+      "updatedAt": "2026-10-15"
+    },
+    "content": {
+      "questionType": "multiple-choice",
+      "stem": "What is the generally recommended length for a CV in Italy?",
+      "options": [
+        { "id": "a", "text": "One page maximum" },
+        { "id": "b", "text": "One to two pages" },
+        { "id": "c", "text": "Three to four pages" },
+        { "id": "d", "text": "No specific convention — any length is acceptable" }
+      ],
+      "correctAnswer": "b",
+      "explanation": "In Italy, one to two pages is the generally accepted length for a CV. A one-page CV is common for recent graduates; two pages for experienced professionals. Three or more pages is typically considered too long unless the role specifically calls for a detailed academic or research background.",
+      "hint": "Think about how much experience a typical job applicant would have.",
+      "culturalNotes": "This is a generalisation — length norms vary by sector (academic CVs are longer). The answer reflects the most broadly applicable guidance. Do not shorten to 'one page' in any language version."
+    },
+    "localizationFlags": {
+      "scenarioDependent": true,
+      "containsProperNouns": false,
+      "containsIdiom": false,
+      "culturalReadinessScore": 8
+    }
+  }
+]

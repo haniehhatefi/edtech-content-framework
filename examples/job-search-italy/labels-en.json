@@ -1,0 +1,174 @@
+[
+  {
+    "id": "ui-btn-check-answer",
+    "type": "ui-label",
+    "meta": {
+      "title": "Check answer button",
+      "language": "en",
+      "version": "2.0",
+      "status": "translation-ready",
+      "frozen": true,
+      "owner": "content-team",
+      "formality": "neutral",
+      "updatedAt": "2026-10-15"
+    },
+    "content": {
+      "labelType": "button",
+      "value": "Check answer",
+      "maxLength": {
+        "default": 20,
+        "de": 28,
+        "fi": 36,
+        "nl": 24
+      },
+      "culturalNotes": "Primary action button. Appears below a question. Learner clicks to submit and see feedback. Imperative form; do not make it a question."
+    },
+    "localizationFlags": {
+      "culturalReadinessScore": 10
+    }
+  },
+  {
+    "id": "ui-btn-continue",
+    "type": "ui-label",
+    "meta": {
+      "title": "Continue button",
+      "language": "en",
+      "version": "2.0",
+      "status": "translation-ready",
+      "frozen": true,
+      "owner": "content-team",
+      "formality": "neutral",
+      "updatedAt": "2026-10-15"
+    },
+    "content": {
+      "labelType": "button",
+      "value": "Continue",
+      "maxLength": {
+        "default": 15,
+        "de": 20,
+        "fi": 28
+      },
+      "culturalNotes": "Navigation button. Moves learner to the next screen. Use the standard forward-navigation term for the target language."
+    },
+    "localizationFlags": {
+      "culturalReadinessScore": 10
+    }
+  },
+  {
+    "id": "ui-progress-lesson",
+    "type": "ui-label",
+    "meta": {
+      "title": "Lesson progress indicator",
+      "language": "en",
+      "version": "2.0",
+      "status": "translation-ready",
+      "frozen": true,
+      "owner": "content-team",
+      "formality": "neutral",
+      "updatedAt": "2026-10-15"
+    },
+    "content": {
+      "labelType": "nav",
+      "value": "Lesson {current} of {total}",
+      "maxLength": 30,
+      "variables": [
+        {
+          "name": "{current}",
+          "description": "Current lesson number (integer)",
+          "example": "3"
+        },
+        {
+          "name": "{total}",
+          "description": "Total number of lessons in this module (integer)",
+          "example": "7"
+        }
+      ],
+      "culturalNotes": "Short progress indicator. Word order may need to change — placeholders can be reordered. Keep the total count visible."
+    },
+    "localizationFlags": {
+      "culturalReadinessScore": 10
+    }
+  },
+  {
+    "id": "ui-status-correct",
+    "type": "ui-label",
+    "meta": {
+      "title": "Correct answer status label",
+      "language": "en",
+      "version": "2.0",
+      "status": "translation-ready",
+      "frozen": true,
+      "owner": "content-team",
+      "formality": "neutral",
+      "updatedAt": "2026-10-15"
+    },
+    "content": {
+      "labelType": "notification",
+      "value": "Correct",
+      "maxLength": {
+        "default": 12,
+        "de": 18,
+        "fi": 22
+      },
+      "culturalNotes": "Shown as a status chip alongside feedback. Short. Do not add exclamation. Use the standard affirmative term for the target language."
+    },
+    "localizationFlags": {
+      "culturalReadinessScore": 10
+    }
+  },
+  {
+    "id": "ui-status-incorrect",
+    "type": "ui-label",
+    "meta": {
+      "title": "Incorrect answer status label",
+      "language": "en",
+      "version": "2.0",
+      "status": "translation-ready",
+      "frozen": true,
+      "owner": "content-team",
+      "formality": "neutral",
+      "updatedAt": "2026-10-15"
+    },
+    "content": {
+      "labelType": "notification",
+      "value": "Not quite",
+      "maxLength": {
+        "default": 15,
+        "de": 20,
+        "fi": 28
+      },
+      "culturalNotes": "Soft negative. Avoid 'Wrong' — the tone must remain encouraging. Use the gentlest natural equivalent in the target language."
+    },
+    "localizationFlags": {
+      "culturalReadinessScore": 10
+    }
+  },
+  {
+    "id": "ui-module-complete",
+    "type": "ui-label",
+    "meta": {
+      "title": "Module complete heading",
+      "language": "en",
+      "version": "2.0",
+      "status": "translation-ready",
+      "frozen": true,
+      "owner": "content-team",
+      "formality": "informal",
+      "updatedAt": "2026-10-15"
+    },
+    "content": {
+      "labelType": "heading",
+      "value": "Module complete!",
+      "maxLength": {
+        "default": 25,
+        "de": 35,
+        "fi": 45,
+        "nl": 30
+      },
+      "culturalNotes": "Celebratory heading. If exclamation marks feel unnatural in the target language, the reviewer may flag for removal. Keep the heading short and positive."
+    },
+    "localizationFlags": {
+      "culturalReadinessScore": 10
+    }
+  }
+]

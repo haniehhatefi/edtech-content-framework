@@ -1,0 +1,92 @@
+{
+  "$schema": "./schemas/cmf-config.schema.json",
+  "version": "2.0",
+  "description": "CMF project configuration. Controls locale fallback chains, text expansion estimates, and source language settings.",
+
+  "source": {
+    "language": "en",
+    "description": "The language in which all source content is authored. All other languages are translations."
+  },
+
+  "locales": {
+    "supported": ["en", "it", "de", "nl", "fr", "es", "sv"],
+    "description": "BCP-47 language tags of all supported locales for this project.",
+
+    "fallbackChains": {
+      "description": "When a string is missing for a locale, the runtime walks this chain left to right and returns the first available version. The source language ('en') should appear last as the final fallback.",
+      "it":    ["en"],
+      "de":    ["en"],
+      "nl":    ["en"],
+      "fr":    ["en"],
+      "es":    ["en"],
+      "sv":    ["en"],
+      "es-419": ["es", "en"],
+      "es-MX":  ["es-419", "es", "en"],
+      "es-AR":  ["es-419", "es", "en"],
+      "fr-CA":  ["fr", "en"],
+      "fr-BE":  ["fr", "en"],
+      "nl-BE":  ["nl", "en"],
+      "de-AT":  ["de", "en"],
+      "de-CH":  ["de", "en"]
+    }
+  },
+
+  "textExpansion": {
+    "description": "Estimated character expansion multipliers relative to English source text. Used by the validator to warn when a single-integer maxLength may be too tight for a given locale's translated string. These are estimates based on average expansion for general prose; UI labels with technical terms may expand differently. Adjust per project after observing actual translation lengths.",
+    "reference": "Esselink, B. (2000). A Practical Guide to Localization. John Benjamins.",
+    "multipliers": {
+      "de":    1.35,
+      "nl":    1.25,
+      "fr":    1.20,
+      "it":    1.15,
+      "es":    1.20,
+      "sv":    1.10,
+      "fi":    1.80,
+      "hu":    1.40,
+      "pl":    1.30,
+      "ru":    1.25,
+      "ja":    0.55,
+      "zh":    0.55,
+      "ko":    0.70,
+      "ar":    1.25,
+      "he":    1.10,
+      "tr":    1.20
+    },
+    "warningThreshold": 0.95,
+    "description2": "The validator issues a warning when: estimatedLength = floor(sourceLength × multiplier) >= maxLength × warningThreshold. Set warningThreshold closer to 1.0 for stricter warnings; lower it to suppress warnings on strings with comfortable headroom."
+  },
+
+  "workflow": {
+    "description": "Permitted status transitions. The validator warns (not errors) if a file is in a status that doesn't match its content completeness. Transitions are enforced loosely — teams may skip stages as needed.",
+    "stages": [
+      "draft",
+      "cultural-review",
+      "translation-ready",
+      "translation",
+      "translator-query",
+      "qa",
+      "published",
+      "archived"
+    ],
+    "rules": {
+      "translation-ready": "meta.frozen must be true before promoting to translation-ready.",
+      "translator-query":  "At least one localeReadiness entry must have a translatorQuery.query field.",
+      "published":         "culturalReadinessScore must be >= 3."
+    }
+  },
+
+  "glossary": {
+    "description": "Glossary files are expected at glossary/{locale}.json. The validator loads available glossaries and checks keyTerms consistency for translated content.",
+    "path": "./glossary",
+    "enforced": true,
+    "description2": "When enforced is true, the validator raises an error (not a warning) on a keyTerm mismatch with the glossary. Set to false to downgrade to warnings during initial glossary adoption."
+  },
+
+  "validator": {
+    "description": "Validator behavior settings.",
+    "stalenessCheck": true,
+    "expansionWarnings": true,
+    "glossaryCheck": true,
+    "translatorQueryCheck": true
+  }
+}

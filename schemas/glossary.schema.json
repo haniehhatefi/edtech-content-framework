@@ -1,0 +1,134 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "edtech-cmf/glossary",
+  "title": "Glossary",
+  "description": "A per-language terminology file. Maps source-language terms to their approved translations for a given locale. Used by the validator to enforce consistency: when a keyTerm in a translated lesson includes a sourceTerm, the validator checks that the translation matches this glossary.",
+  "type": "object",
+  "required": ["language", "sourceLanguage", "version", "terms"],
+  "additionalProperties": false,
+
+  "properties": {
+
+    "language": {
+      "type": "string",
+      "pattern": "^[a-z]{2,3}(-[A-Za-z0-9]{2,8})*$",
+      "description": "BCP-47 tag of the target language for this glossary. This is the language of the 'translation' field in each term. Example: 'it', 'de', 'es-419'."
+    },
+
+    "sourceLanguage": {
+      "type": "string",
+      "pattern": "^[a-z]{2,3}(-[A-Za-z0-9]{2,8})*$",
+      "description": "BCP-47 tag of the language used in the 'sourceTerm' field of each entry. Must match the source language of your content files. Example: 'en'."
+    },
+
+    "version": {
+      "type": "string",
+      "pattern": "^\\d+\\.\\d+$",
+      "description": "Glossary version. Increment when terms are added, removed, or changed. Content files can reference this version to signal their glossary compliance level."
+    },
+
+    "updatedAt": {
+      "type": "string",
+      "format": "date"
+    },
+
+    "maintainer": {
+      "type": "string",
+      "description": "Name or role of the person responsible for maintaining this glossary."
+    },
+
+    "terms": {
+      "type": "array",
+      "description": "The term list. Each entry maps one source term to its approved translation. Terms must be unique by sourceTerm within a glossary.",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "required": ["sourceTerm", "translation"],
+        "additionalProperties": false,
+        "properties": {
+
+          "sourceTerm": {
+            "type": "string",
+            "description": "The term in the source language (sourceLanguage). This is the lookup key — it must match the sourceTerm field in translated lesson keyTerms entries."
+          },
+
+          "translation": {
+            "type": "string",
+            "description": "The approved translation in the target language (language). Do not use this field for literal translations — record the term that is actually used in context in this language."
+          },
+
+          "definition": {
+            "type": "string",
+            "description": "Optional definition of the source term, in the source language. Helps translators understand the term's scope when no reference is available."
+          },
+
+          "notes": {
+            "type": "string",
+            "description": "Any notes for the translator or reviewer: usage constraints, gender agreement, false friends to avoid, regional variants."
+          },
+
+          "domain": {
+            "type": "string",
+            "description": "The subject domain this term belongs to. Useful when the same source term has different translations in different domains (e.g. 'curriculum' in education vs. CV context)."
+          },
+
+          "forbidden": {
+            "type": "array",
+            "description": "Alternative translations that MUST NOT be used for this term in this language. Document any near-miss terms that have been rejected in review.",
+            "items": { "type": "string" }
+          },
+
+          "updatedAt": {
+            "type": "string",
+            "format": "date",
+            "description": "When this specific term entry was last updated. Useful for auditing freshness."
+          }
+
+        }
+      }
+    }
+
+  },
+
+  "examples": [
+    {
+      "language": "it",
+      "sourceLanguage": "en",
+      "version": "1.0",
+      "updatedAt": "2026-10-15",
+      "maintainer": "giulia.m",
+      "terms": [
+        {
+          "sourceTerm": "numerator",
+          "translation": "numeratore",
+          "definition": "The top number in a fraction — how many parts are taken.",
+          "notes": "Gender: masculine (il numeratore). No regional variants within Italy.",
+          "domain": "mathematics"
+        },
+        {
+          "sourceTerm": "denominator",
+          "translation": "denominatore",
+          "definition": "The bottom number in a fraction — the total number of parts.",
+          "notes": "Gender: masculine (il denominatore).",
+          "domain": "mathematics"
+        },
+        {
+          "sourceTerm": "curriculum vitae",
+          "translation": "curriculum vitae",
+          "definition": "A document summarising a job applicant's education, experience, and skills.",
+          "notes": "Keep in Latin form — 'curriculum vitae' is the established term in Italian professional contexts. Abbreviation 'CV' is also widely accepted. Do not translate as 'résumé'.",
+          "forbidden": ["résumé", "vitae"],
+          "domain": "job-search"
+        },
+        {
+          "sourceTerm": "cover letter",
+          "translation": "lettera di presentazione",
+          "definition": "A document accompanying the CV, introducing the applicant.",
+          "notes": "Some job postings use 'lettera motivazionale' — both are acceptable. Prefer 'lettera di presentazione' for consistency unless the posting specifies otherwise.",
+          "forbidden": ["lettera di copertura"],
+          "domain": "job-search"
+        }
+      ]
+    }
+  ]
+}
