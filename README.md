@@ -20,10 +20,21 @@ This framework builds on Hanieh Hatefi's research on [English-default interfaces
 
 ```
 edtech-content-framework/
-├── schemas/              # Content type definitions (JSON Schema)
-├── checklists/           # Cultural readiness checklists per language
-├── workflow/             # Content lifecycle process
-└── examples/             # Annotated real-world usage examples
+├── schemas/
+│   ├── lesson.schema.json
+│   ├── question.schema.json
+│   ├── feedback.schema.json
+│   ├── ui-label.schema.json
+│   └── glossary.schema.json
+├── checklists/
+├── examples/
+├── glossary/
+│   └── it.json
+├── workflow/
+├── cmf.config.json
+├── validate.js
+├── package.json
+└── README.md
 ```
 
 ## Three Pillars
