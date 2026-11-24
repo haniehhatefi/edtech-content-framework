@@ -184,6 +184,41 @@ The validator checks translated lesson `keyTerms` containing a `sourceTerm` fiel
 This supports terminology consistency across translated educational content.
 
 ---
+## Applied in Practice: Party Hub
+
+### From Localization Framework to a Multilingual Gaming Product
+
+The framework's localization principles were applied in a real-world collaboration with the developer of **Party Hub**, an offline cross-platform social party game.
+
+The collaboration extended the game's language support to five languages: **English, Persian, Italian, Arabic, and Spanish**, while establishing a structured localization workflow.
+
+Rather than treating localization as a translation-only process, the work addressed both multilingual content adaptation and the operational requirements of maintaining localized content.
+
+**Localization implementation**
+
+- **Structured string management:** Organized and managed multilingual interface and game content.
+- **Locale-specific constraints:** Applied language-specific character limits and considered text expansion.
+- **RTL support:** Addressed right-to-left layout and content considerations for Persian and Arabic.
+- **Terminology consistency:** Established terminology guidelines across language versions.
+- **Localization QA:** Incorporated language-specific checks and quality review into the localization workflow.
+- **Cultural and linguistic adaptation:** Adapted content to the linguistic and cultural characteristics of each target language.
+
+**Product overview**
+
+| Attribute | Details |
+|---|---|
+| Product | Party Hub – Offline Mobile Party Game |
+| Languages | English, Persian, Italian, Arabic, Spanish |
+| Platforms | Android and Web (PWA) |
+| Product category | Social & Party Gaming |
+| Contribution | Localization strategy, workflow design, multilingual content adaptation |
+
+**Explore the product**
+
+- [Google Play – Android App](https://play.google.com/store/apps/details?id=com.faryan.partyhub)
+- [Party Hub – Web App](https://party-hub-game.vercel.app/)
+
+*Party Hub demonstrates the application of the framework's localization principles beyond its original EdTech context, connecting structured content management, multilingual UX, and localization quality practices in a published digital product.*
 
 ## Languages Covered
 
